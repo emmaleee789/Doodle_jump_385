@@ -1,0 +1,701 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/emmal/Desktop/ECE385/simulation/modelsim
+vaddr1_mux
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1711680416
+!i10b 1
+!s100 lY5A52C@lNGJkmSJ<4KW;1
+I>n]nmGfY9P>O0I:nT0h;01
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 !s105 MUX_sv_unit
+S1
+R0
+Z5 w1711622879
+Z6 8C:/Users/emmal/Desktop/ECE385/lab6/MUX.sv
+Z7 FC:/Users/emmal/Desktop/ECE385/lab6/MUX.sv
+L0 62
+Z8 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z9 !s108 1711680416.000000
+Z10 !s107 C:/Users/emmal/Desktop/ECE385/lab6/MUX.sv|
+Z11 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/emmal/Desktop/ECE385/lab6|C:/Users/emmal/Desktop/ECE385/lab6/MUX.sv|
+!i113 1
+Z12 o-sv -work work
+Z13 !s92 -sv -work work +incdir+C:/Users/emmal/Desktop/ECE385/lab6
+Z14 tCvgOpt 0
+vaddr2_mux
+R1
+R2
+!i10b 1
+!s100 =ZOd?b6cQQ]k9V<GhmLIH3
+IO4zC5JCGoTN:4Jh<:^8iN3
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 79
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+vALU
+R1
+R2
+!i10b 1
+!s100 675IGO7>f_IW?Ic^8J<HU1
+IWUo5m09BM0:Yk?MXCY84G2
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 146
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+n@a@l@u
+vbus_mux
+R1
+R2
+!i10b 1
+!s100 _R<dY=786[m5oDhOBYe_l2
+IgD?:f]kD2kdD5zEj2AD@=2
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 39
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+vdatapath
+R1
+Z15 !s110 1711680417
+!i10b 1
+!s100 5NmX<N12H2>Ud]Tnbz48C1
+IlVL5WU0hS8[:MmSb@R_SN0
+R3
+!s105 datapath_sv_unit
+S1
+R0
+w1711622986
+8C:/Users/emmal/Desktop/ECE385/lab6/datapath.sv
+FC:/Users/emmal/Desktop/ECE385/lab6/datapath.sv
+L0 1
+R8
+r1
+!s85 0
+31
+Z16 !s108 1711680417.000000
+!s107 C:/Users/emmal/Desktop/ECE385/lab6/datapath.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/emmal/Desktop/ECE385/lab6|C:/Users/emmal/Desktop/ECE385/lab6/datapath.sv|
+!i113 1
+R12
+R13
+R14
+vDR_mux
+R1
+R2
+!i10b 1
+!s100 bOc9@d;5>D4MJO;4D_lNH3
+I2oG`7oCUY?n3Y<3_^n@<`0
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 130
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+n@d@r_mux
+vFullAdder16bit
+R1
+R2
+!i10b 1
+!s100 lBYZAVBc_Ij^3OT^>ZjRN2
+IljC97[h5mJo^m84Dm@]I;0
+R3
+Z17 !s105 utils_sv_unit
+S1
+R0
+Z18 w1711608074
+Z19 8C:/Users/emmal/Desktop/ECE385/lab6/utils.sv
+Z20 FC:/Users/emmal/Desktop/ECE385/lab6/utils.sv
+L0 35
+R8
+r1
+!s85 0
+31
+R9
+Z21 !s107 C:/Users/emmal/Desktop/ECE385/lab6/utils.sv|
+Z22 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/emmal/Desktop/ECE385/lab6|C:/Users/emmal/Desktop/ECE385/lab6/utils.sv|
+!i113 1
+R12
+R13
+R14
+n@full@adder16bit
+vHexDriver
+R1
+R2
+!i10b 1
+!s100 ^DddjRd7Wla]U<SlP;mT@0
+I2M=z`Okdbc1TgZa7neM;K2
+R3
+!s105 HexDriver_sv_unit
+S1
+R0
+w1472679712
+8C:/Users/emmal/Desktop/ECE385/lab6/HexDriver.sv
+FC:/Users/emmal/Desktop/ECE385/lab6/HexDriver.sv
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Users/emmal/Desktop/ECE385/lab6/HexDriver.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/emmal/Desktop/ECE385/lab6|C:/Users/emmal/Desktop/ECE385/lab6/HexDriver.sv|
+!i113 1
+R12
+R13
+R14
+n@hex@driver
+vISDU
+R1
+R2
+!i10b 1
+!s100 D4k2O12NI72eCb6c>94=d3
+IhzfmkkfL[HBWThi_7Wj:53
+R3
+!s105 ISDU_sv_unit
+S1
+R0
+w1711620762
+8C:/Users/emmal/Desktop/ECE385/lab6/ISDU.sv
+FC:/Users/emmal/Desktop/ECE385/lab6/ISDU.sv
+Z23 L0 19
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Users/emmal/Desktop/ECE385/lab6/ISDU.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/emmal/Desktop/ECE385/lab6|C:/Users/emmal/Desktop/ECE385/lab6/ISDU.sv|
+!i113 1
+R12
+R13
+R14
+n@i@s@d@u
+vlab6_toplevel
+R1
+R15
+!i10b 1
+!s100 k;XFYEj__@<f`n61h0?<B3
+II0dGTWkIl7E>l;D;K`b8<3
+R3
+!s105 lab6_toplevel_sv_unit
+S1
+R0
+Z24 w1710845703
+8C:/Users/emmal/Desktop/ECE385/lab6/lab6_toplevel.sv
+FC:/Users/emmal/Desktop/ECE385/lab6/lab6_toplevel.sv
+L0 10
+R8
+r1
+!s85 0
+31
+R16
+!s107 C:/Users/emmal/Desktop/ECE385/lab6/lab6_toplevel.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/emmal/Desktop/ECE385/lab6|C:/Users/emmal/Desktop/ECE385/lab6/lab6_toplevel.sv|
+!i113 1
+R12
+R13
+R14
+vlogic_ben
+R1
+R2
+!i10b 1
+!s100 =2z1I?ViYz<[^@j4TD]Q_3
+I7HhYe<3g=i2_jFffGo@QW0
+R3
+R17
+S1
+R0
+R18
+R19
+R20
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+R21
+R22
+!i113 1
+R12
+R13
+R14
+vlogic_nzp
+R1
+R2
+!i10b 1
+!s100 GP^UzeFO>I`cA?az0iYoN0
+IhVifYJ0_HEmmiaF6dRWe:3
+R3
+R17
+S1
+R0
+R18
+R19
+R20
+L0 20
+R8
+r1
+!s85 0
+31
+R9
+R21
+R22
+!i113 1
+R12
+R13
+R14
+vMDR_mux
+R1
+R2
+!i10b 1
+!s100 Ibg^laEd5dOE>Gcf:cY:W3
+IVzkCP@FJ@2M6Y_C<97_nR1
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 23
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+n@m@d@r_mux
+vMem2IO
+R1
+R2
+!i10b 1
+!s100 d<=A`]_5?F8Tz<i9:]04<3
+Id3oiiT;P8z8_8KU7404=e3
+R3
+!s105 Mem2IO_sv_unit
+S1
+R0
+w1711519226
+8C:/Users/emmal/Desktop/ECE385/lab6/Mem2IO.sv
+FC:/Users/emmal/Desktop/ECE385/lab6/Mem2IO.sv
+Z25 L0 16
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Users/emmal/Desktop/ECE385/lab6/Mem2IO.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/emmal/Desktop/ECE385/lab6|C:/Users/emmal/Desktop/ECE385/lab6/Mem2IO.sv|
+!i113 1
+R12
+R13
+R14
+n@mem2@i@o
+Xmemory_contents_sv_unit
+R1
+Z26 DXx4 work 6 SLC3_2 0 22 OnA4cH>@9e0WeF^Xc?e7f1
+VBTXUcVNRUk4N`hGbWgMPU2
+r1
+!s85 0
+31
+!i10b 1
+!s100 c2m7WKcaV<L[XVf`30RGj3
+IBTXUcVNRUk4N`hGbWgMPU2
+!i103 1
+S1
+R0
+Z27 w1711680084
+Z28 8C:/Users/emmal/Desktop/ECE385/lab6/memory_contents.sv
+Z29 FC:/Users/emmal/Desktop/ECE385/lab6/memory_contents.sv
+L0 14
+R8
+R16
+Z30 !s107 C:/Users/emmal/Desktop/ECE385/lab6/memory_contents.sv|
+Z31 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/emmal/Desktop/ECE385/lab6|C:/Users/emmal/Desktop/ECE385/lab6/memory_contents.sv|
+!i113 1
+R12
+R13
+R14
+vmemory_parser
+R1
+R26
+DXx4 work 23 memory_contents_sv_unit 0 22 BTXUcVNRUk4N`hGbWgMPU2
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 jfCcD>Ef5]DfJYM[M7Z5n1
+I=X=VDVh`WU>c3d:AzbKC^1
+!s105 memory_contents_sv_unit
+S1
+R0
+R27
+R28
+R29
+R25
+R8
+R16
+R30
+R31
+!i113 1
+R12
+R13
+R14
+vPC_mux
+R1
+R2
+!i10b 1
+!s100 JPT_g<AXKbT7HT5AVeM_d2
+IlEcF5nSLCBn;kdK>5Xzn<0
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+n@p@c_mux
+vReg
+R1
+R26
+Z32 DXx4 work 17 registers_sv_unit 0 22 4z<5OPII`2:dQfIb3z@Hg0
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 fXHifI[Eggn20[XI6gl402
+IAY=H8Ajb@Sand35IU^DL[1
+Z33 !s105 registers_sv_unit
+S1
+R0
+Z34 w1711603600
+Z35 8C:/Users/emmal/Desktop/ECE385/lab6/registers.sv
+Z36 FC:/Users/emmal/Desktop/ECE385/lab6/registers.sv
+L0 4
+R8
+R9
+Z37 !s107 C:/Users/emmal/Desktop/ECE385/lab6/SLC3_2.sv|C:/Users/emmal/Desktop/ECE385/lab6/registers.sv|
+Z38 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/emmal/Desktop/ECE385/lab6|C:/Users/emmal/Desktop/ECE385/lab6/registers.sv|
+!i113 1
+R12
+R13
+R14
+n@reg
+vRegFile
+R1
+R26
+R32
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 L1gjl<[1Zg]RnjR`DgHmd3
+ILM3JX:[STcGmZO<35:@1Z1
+R33
+S1
+R0
+R34
+R35
+R36
+L0 21
+R8
+R9
+R37
+R38
+!i113 1
+R12
+R13
+R14
+n@reg@file
+Xregisters_sv_unit
+R1
+R26
+V4z<5OPII`2:dQfIb3z@Hg0
+r1
+!s85 0
+31
+!i10b 1
+!s100 VoKmNDmEWeb>[4g9:lK1G3
+I4z<5OPII`2:dQfIb3z@Hg0
+!i103 1
+S1
+R0
+R34
+R35
+R36
+Z39 FC:/Users/emmal/Desktop/ECE385/lab6/SLC3_2.sv
+L0 2
+R8
+R9
+R37
+R38
+!i113 1
+R12
+R13
+R14
+vslc3
+R1
+R15
+!i10b 1
+!s100 0SMoY;6N0fZZGi:TkW9hX0
+IY;_82Sc^P0UC@i9fQ79UX3
+R3
+!s105 slc3_sv_unit
+S1
+R0
+w1711352755
+8C:/Users/emmal/Desktop/ECE385/lab6/slc3.sv
+FC:/Users/emmal/Desktop/ECE385/lab6/slc3.sv
+R23
+R8
+r1
+!s85 0
+31
+R16
+!s107 C:/Users/emmal/Desktop/ECE385/lab6/slc3.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/emmal/Desktop/ECE385/lab6|C:/Users/emmal/Desktop/ECE385/lab6/slc3.sv|
+!i113 1
+R12
+R13
+R14
+XSLC3_2
+R1
+R2
+!i10b 1
+!s100 Cz8_^@QRefP31?j=Zf>lj0
+IOnA4cH>@9e0WeF^Xc?e7f1
+VOnA4cH>@9e0WeF^Xc?e7f1
+S1
+R0
+w1711593668
+8C:/Users/emmal/Desktop/ECE385/lab6/SLC3_2.sv
+R39
+L0 24
+R8
+r1
+!s85 0
+31
+R9
+R37
+R38
+!i113 1
+R12
+R13
+R14
+n@s@l@c3_2
+vSR1_mux
+R1
+R2
+!i10b 1
+!s100 P6WMi<Oc=W]ZhKUhzl6;M3
+Io:?0?f[b>7OcHOM]j=^NG3
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 97
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+n@s@r1_mux
+vSR2_mux
+R1
+R2
+!i10b 1
+!s100 >1M1_6LT:O_U]aNLE`O2U3
+I0WA^V:[U8zNgKJo_XOngd0
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 114
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+n@s@r2_mux
+vtest_memory
+R1
+R2
+!i10b 1
+!s100 AZAU7PQT4]][EEHo>57W43
+IjYYD>hJ66E;m`XRoYm=RQ2
+R3
+!s105 test_memory_sv_unit
+S1
+R0
+R24
+8C:/Users/emmal/Desktop/ECE385/lab6/test_memory.sv
+FC:/Users/emmal/Desktop/ECE385/lab6/test_memory.sv
+L0 22
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Users/emmal/Desktop/ECE385/lab6/test_memory.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/emmal/Desktop/ECE385/lab6|C:/Users/emmal/Desktop/ECE385/lab6/test_memory.sv|
+!i113 1
+R12
+R13
+R14
+vtestbench_week2
+R1
+R15
+!i10b 1
+!s100 cJ`81^@Y?Yj9N^UKbk3lH1
+IinK7JJ7o?ncBXJ;:B[CgN2
+R3
+!s105 testbench_week228229_sv_unit
+S1
+R0
+w1711618509
+8C:/Users/emmal/Desktop/ECE385/lab6/testbench_week2(2).sv
+FC:/Users/emmal/Desktop/ECE385/lab6/testbench_week2(2).sv
+L0 43
+R8
+r1
+!s85 0
+31
+R16
+!s107 C:/Users/emmal/Desktop/ECE385/lab6/testbench_week2(2).sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/emmal/Desktop/ECE385/lab6|C:/Users/emmal/Desktop/ECE385/lab6/testbench_week2(2).sv|
+!i113 1
+R12
+R13
+R14
+vtristate
+R1
+R2
+!i10b 1
+!s100 Akazoo=71mOgoH<gVR_UC0
+IMPTUU;1GMfdUcW=5ONA0B2
+R3
+!s105 tristate_sv_unit
+S1
+R0
+R24
+8C:/Users/emmal/Desktop/ECE385/lab6/tristate.sv
+FC:/Users/emmal/Desktop/ECE385/lab6/tristate.sv
+R25
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Users/emmal/Desktop/ECE385/lab6/tristate.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/emmal/Desktop/ECE385/lab6|C:/Users/emmal/Desktop/ECE385/lab6/tristate.sv|
+!i113 1
+R12
+R13
+R14

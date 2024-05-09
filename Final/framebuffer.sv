@@ -68,7 +68,8 @@ module framebuffer
         input  logic          disable_db,    //! Disable Double Buffering
         output logic          odd_line_out,   //! Odd Line Detector
         //debug
-        output buffer_using
+        output buffer_using,
+        output wr_en
     );
 
     // Video Data
@@ -81,7 +82,7 @@ module framebuffer
 
     // Framebuffer Control
     reg           active_buffer  = 1'b1;      //! Using either buffer 1 or buffer 2 to output video
-    //assign buffer_using = active_buffer;      //! Output buffer in use
+    assign buffer_using = active_buffer;      //! Output buffer in use
 
     // Framebuffer #1
     reg           buffer1_wren;               //! Buffer 1 is ready to receive new pixel data
@@ -229,6 +230,7 @@ module framebuffer
             end
         end
     end
+    assign wr_en = buffer1_wren | buffer2_wren;
 
     // The timings follow the VESA Discrete Monitor Timings (DMT) standard
     // ModeLine " 640x480@60"  25.20  640  656  752  800  480  490  492  525 -HSync -VSync

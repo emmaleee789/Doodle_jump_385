@@ -143,8 +143,6 @@ ELF := lab9_app.elf
 
 # Paths to C, C++, and assembly source files.
 C_SRCS += main.c
-C_SRCS += palette_test.c
-C_SRCS += text_mode_vga_color.c
 C_SRCS += io_handler.c
 C_SRCS += usb.c
 CXX_SRCS :=

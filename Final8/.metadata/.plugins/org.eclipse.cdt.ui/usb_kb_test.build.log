@@ -1,0 +1,6 @@
+13:59:05 **** Clean-only build of configuration Nios II for project usb_kb_test ****
+make clean 
+make: *** No rule to make target `clean'.  Stop.
+
+13:59:05 Build Finished (took 116ms)
+

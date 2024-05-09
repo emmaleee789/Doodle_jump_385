@@ -64,7 +64,7 @@ module vga_text_avl_interface (
 	logic [9:0] draw_x, draw_y;
 	logic [7:0] draw_color, palette_in;
 	logic [9:0] Doodle_X, Doodle_Y;
-	logic buffer_using;
+	logic buffer_using, wr_en;
 
 	assign frame_clk = vblank_ah;
 
@@ -109,8 +109,8 @@ module vga_text_avl_interface (
 		.vblank_in(~vblank_ah),
 		//output
 		.rgb_out(palette_in), 
+		.buffer_using(buffer_using), .wr_en(wr_en),
 		.hsync_out(), .vsync_out(), .blank_out(),
-		.buffer_using(buffer_using)
 	);
 	assign hs = hblank_ah;
 	assign vs = vblank_ah;

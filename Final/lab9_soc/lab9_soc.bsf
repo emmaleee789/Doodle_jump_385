@@ -268,7 +268,7 @@ refer to the applicable agreement for further details.
 		(text "sync" (rect 165 707 354 1424)(font "Arial" (color 0 0 0)))
 		(text "vs" (rect 165 723 342 1456)(font "Arial" (color 0 0 0)))
 		(text "keycode" (rect 165 739 372 1488)(font "Arial" (color 0 0 0)))
-		(text " lab9_soc " (rect 343 760 746 1530)(font "Arial" ))
+		(text " system " (rect 349 760 746 1530)(font "Arial" ))
 		(line (pt 160 32)(pt 224 32)(line_width 1))
 		(line (pt 224 32)(pt 224 760)(line_width 1))
 		(line (pt 160 760)(pt 224 760)(line_width 1))
