@@ -1,0 +1,186 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/simulation/modelsim
+vcarry_select_adder
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1710231881
+!i10b 1
+!s100 Z^==>`@N?UzXOzDX=eWW;1
+IeOf5]<X@^R?1J:mbBWOhJ2
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 !s105 carry_select_adder_sv_unit
+S1
+R0
+Z5 w1709893341
+Z6 8C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/carry_select_adder.sv
+Z7 FC:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/carry_select_adder.sv
+L0 1
+Z8 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z9 !s108 1710231881.000000
+Z10 !s107 C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/carry_select_adder.sv|
+Z11 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2|C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/carry_select_adder.sv|
+!i113 1
+Z12 o-sv -work work
+Z13 !s92 -sv -work work +incdir+C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2
+Z14 tCvgOpt 0
+vcarry_select_adder4
+R1
+R2
+!i10b 1
+!s100 Q1TLo9nA7EWHa<5?3h?af2
+I0AFoRbP=TYA@8WQEiL[]I0
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 29
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+vfull_adder
+R1
+Z15 !s110 1710231880
+!i10b 1
+!s100 PhbWJBCDHDGeIzRk07V4G2
+IzCBFm9aBbEWEn^A3E`5BD0
+R3
+!s105 full_adder_sv_unit
+S1
+R0
+w1709709003
+8C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/full_adder.sv
+FC:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/full_adder.sv
+L0 1
+R8
+r1
+!s85 0
+31
+Z16 !s108 1710231880.000000
+!s107 C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/full_adder.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2|C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/full_adder.sv|
+!i113 1
+R12
+R13
+R14
+vHexDriver
+R1
+R15
+!i10b 1
+!s100 ^DddjRd7Wla]U<SlP;mT@0
+IPdmV_cnA]zBb^i=M;QUO@1
+R3
+!s105 HexDriver_sv_unit
+S1
+R0
+w1472679712
+8C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/HexDriver.sv
+FC:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/HexDriver.sv
+L0 1
+R8
+r1
+!s85 0
+31
+R16
+!s107 C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/HexDriver.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2|C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/HexDriver.sv|
+!i113 1
+R12
+R13
+R14
+n@hex@driver
+vlab4_adders_toplevel
+R1
+R2
+!i10b 1
+!s100 JD[>08GCoFfH65EZ1jaIE3
+IHz:gOR]>l0Sz6zLI9YI[30
+R3
+!s105 lab4_adders_toplevel_sv_unit
+S1
+R0
+w1709893397
+8C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/lab4_adders_toplevel.sv
+FC:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/lab4_adders_toplevel.sv
+L0 17
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/lab4_adders_toplevel.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2|C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/lab4_adders_toplevel.sv|
+!i113 1
+R12
+R13
+R14
+vmultiplexer2
+R1
+R2
+!i10b 1
+!s100 <e5Q3=Rfge81KZHUAkG[P1
+I8PFJ^En_O2DCikkE_eb8^1
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 62
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+vtestbench
+R1
+R2
+!i10b 1
+!s100 cHn3>7M4Azd4N4L[hSH[D1
+IkR?YU[AB;BXhQEhnH8liz0
+R3
+!s105 testbench_adder_sv_unit
+S1
+R0
+w1709278426
+8C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/testbench_adder.sv
+FC:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/testbench_adder.sv
+L0 5
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/testbench_adder.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2|C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/testbench_adder.sv|
+!i113 1
+R12
+R13
+R14

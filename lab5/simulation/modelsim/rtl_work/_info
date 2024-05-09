@@ -1,0 +1,212 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/simulation/modelsim
+vADD8
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1710841998
+!i10b 1
+!s100 >@lAT33Ln8Wl6>oeKQMzm0
+IHH`g05Dj6f53D_c_iCY?X1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 !s105 lab5_toplevel_sv_unit
+S1
+R0
+Z5 w1710304028
+Z6 8C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/lab5_toplevel.sv
+Z7 FC:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/lab5_toplevel.sv
+L0 49
+Z8 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z9 !s108 1710841998.000000
+Z10 !s107 C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/lab5_toplevel.sv|
+Z11 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5|C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/lab5_toplevel.sv|
+!i113 1
+Z12 o-sv -work work
+Z13 !s92 -sv -work work +incdir+C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5
+Z14 tCvgOpt 0
+n@a@d@d8
+vcontrol
+R1
+R2
+!i10b 1
+!s100 k>G63XVWoS<5JcOZgcCge1
+I=LgJH``CTAmbe^^:`V84M2
+R3
+!s105 Control_sv_unit
+S1
+R0
+w1710331357
+8C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/Control.sv
+FC:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/Control.sv
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/Control.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5|C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/Control.sv|
+!i113 1
+R12
+R13
+R14
+vflip
+R1
+R2
+!i10b 1
+!s100 kT[>hDEkzeE3V`oF18@6g2
+I7Wj8][iI`EJT3X90ceLAf3
+R3
+Z15 !s105 shift_reg_sv_unit
+S1
+R0
+Z16 w1710331423
+Z17 8C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/shift_reg.sv
+Z18 FC:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/shift_reg.sv
+L0 44
+R8
+r1
+!s85 0
+31
+R9
+Z19 !s107 C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/shift_reg.sv|
+Z20 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5|C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/shift_reg.sv|
+!i113 1
+R12
+R13
+R14
+vfull_adder
+R1
+R2
+!i10b 1
+!s100 4Az37XhcdLO<_[k9EeCb;3
+I373cBmf`jIPUi`=d7gWza2
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 74
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+vHexDriver
+R1
+R2
+!i10b 1
+!s100 ^DddjRd7Wla]U<SlP;mT@0
+IP6[l^C^Z3[:EXU1V6VUPa3
+R3
+!s105 HexDriver_sv_unit
+S1
+R0
+w1472679712
+8C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/HexDriver.sv
+FC:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/HexDriver.sv
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/HexDriver.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5|C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/HexDriver.sv|
+!i113 1
+R12
+R13
+R14
+n@hex@driver
+vlab5_toplevel
+R1
+R2
+!i10b 1
+!s100 CLK:DHc4F0W[JY8KeLR<o0
+IA5NF7Uh8[S]I`jKe?;NAm2
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+vshift_reg
+R1
+R2
+!i10b 1
+!s100 48GFWhS>I_DPHXDWz8J4=0
+I?K3Z4^MN:E:fAJ?gSF2]G0
+R3
+R15
+S1
+R0
+R16
+R17
+R18
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+R19
+R20
+!i113 1
+R12
+R13
+R14
+vtestbench
+R1
+R2
+!i10b 1
+!s100 Q]3^L0FTf15Z0O_g:2kA83
+ID12Dz1N0LH]Fa]h[PY5h@2
+R3
+!s105 testbench_sv_unit
+S1
+R0
+w1710226774
+8C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/testbench.sv
+FC:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/testbench.sv
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/testbench.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5|C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/testbench.sv|
+!i113 1
+R12
+R13
+R14

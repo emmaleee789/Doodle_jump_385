@@ -1,0 +1,252 @@
+module lab5_toplevel (
+	input logic [7:0] S,
+	input logic Clk, Reset, Run, ClearA_LoadB, 
+	output logic [6:0] AhexU, AhexL, BhexU, BhexL,
+	output logic [7:0] Aval, Bval,
+	output logic X
+);
+	control control_unit (
+						.Clk(Clk),
+						.Reset(Reset),
+						.Run(Run),
+						.ClearA_LoadB(ClearA_LoadB),
+						.A(Aval),
+						.B(Bval),
+						.Clr_Ld,
+						.Shift,
+						.Add,
+						.Sub );
+	
+	HexDriver        HexAL (
+					.In0(A[3:0]),
+					.Out0(AhexL) );
+	HexDriver        HexBL (
+					.In0(B[3:0]),
+					.Out0(BhexL) );
+	HexDriver        HexAU (
+					.In0(A[7:4]),
+					.Out0(AhexU) );	
+	HexDriver        HexBU (
+					.In0(B[7:4]),
+					.Out0(BhexU) );
+							
+	//Input synchronizers required for asynchronous inputs (in this case, from the switches)
+	//These are array module instantiations
+	//Note: S stands for SYNCHRONIZED, H stands for active HIGH
+	//Note: We can invert the levels inside the port assignments
+	sync button_sync[3:0] (Clk, {~Reset, ~LoadA, ~LoadB, ~Execute}, {Reset_SH, LoadA_SH, LoadB_SH, Execute_SH});
+	//sync Din_sync[7:0] (Clk, Din, Din_S);
+	//sync F_sync[2:0] (Clk, F, F_S);
+	//sync R_sync[1:0] (Clk, R, R_S);
+endmodule
+
+
+module control (
+	input logic Clk, Reset, Run, ClearA_LoadB, 
+	input logic [7:0] A, B,
+	output logic Clr_Ld, Shift, Add, Sub
+);
+    enum logic {Add1, Shift1, Add2, Shift2, Add3, Shift3, Add4, Shift4, Add5, Shift5, Add6, Shift6, Add7, Shift7, Sub, Shift8, Stop, Start, LDB, Done}   curr_state, next_state; 
+	logic [7:0] A2, B2;
+	logic M;
+
+    always_ff @ (posedge Clk)  
+    begin
+        if (Reset)
+            curr_state <= Stop;
+        else 
+            curr_state <= next_state;
+    end
+
+	always_comb
+    begin        
+		next_state  = curr_state;	//required because I haven't enumerated all possibilities below
+		M = B[0];
+        unique case (curr_state) 
+            Stop : 	if (ClearA_LoadB)
+                        next_state = CALB;
+			CALB:    next_state = Start;
+			Start: 	if (Run)
+						next_state = Add1;
+            Add1 :    next_state = Shift1;
+            Shift1 :    next_state = Add2;
+            Add2 :    next_state = Shift2;
+            Shift2 :    next_state = Add3;
+            Add3 :	 next_state = Shift3;
+            Shift3 :	 next_state = Add4;
+            Add4 :	 next_state = Shift4;
+            Shift4 :	 next_state = Add5;
+			Add5 :    next_state = Shift5;
+            Shift5 :    next_state = Add6;
+            Add6 :    next_state = Shift6;
+            Shift6 :    next_state = Add7;
+            Add7 :	 next_state = Shift7;
+            Shift7: begin
+				if(M==0) next_state = Add8;
+				else next_state = Sub;
+			end
+			Add8 :	 next_state = Shift8;
+            Sub :	 next_state = Shift8;
+            Shift8 :	 next_state = Done;
+            
+            Done :    if (~Run) 
+                       next_state = Stop;
+        endcase
+   
+		  // Assign outputs based on ‘state’
+        case (curr_state) 
+			CALB: begin
+				assign B[7:0] = S[7:0];
+				assign A[7:0] = 8'b0;
+				assign X = 1'b0;
+				assign Clr_Ld = 1'b1;
+			end
+	   		Add1: begin
+				if(M==1): ADD add1(.A(A), .S(S), .A2(A2), .X(X));
+				else: ADD add1(.A(A), .S(1'b0), .A2(A2), .X(X));
+				assign A = A2;
+		    end
+			Shift1: begin
+				SHIFT shift1(.A(A), .B(B), .X(X), .A2(A2), .B2(B2));
+				assign A = A2;
+				assign B = B2;
+			end
+			Add2: begin
+				if(M==1): ADD add2(.A(A), .S(S), .A2(A2), .X(X));
+				else: ADD add2(.A(A), .S(1'b0), .A2(A2), .X(X));
+				assign A = A2;
+			end
+			Shift2: begin
+				SHIFT shift2(.A(A), .B(B), .X(X), .A2(A2), .B2(B2));
+				assign A = A2;
+				assign B = B2;
+			end
+			Add3: begin
+				if(M==1): ADD add3(.A(A), .S(S), .A2(A2), .X(X));
+				else: ADD add3(.A(A), .S(1'b0), .A2(A2), .X(X));
+				assign A = A2;
+			end
+			Shift3: begin
+				SHIFT shift3(.A(A), .B(B), .X(X), .A2(A2), .B2(B2));
+				assign A = A2;
+				assign B = B2;
+			end
+			Add4: begin
+				if(M==1): ADD add4(.A(A), .S(S), .A2(A2), .X(X));
+				else: ADD add4(.A(A), .S(1'b0), .A2(A2), .X(X));
+				assign A = A2;
+			end
+			Shift4: begin
+				SHIFT shift4(.A(A), .B(B), .X(X), .A2(A2), .B2(B2));
+				assign A = A2;
+				assign B = B2;
+			end
+			Add5: begin
+				if(M==1): ADD add5(.A(A), .S(S), .A2(A2), .X(X));
+				else: ADD add5(.A(A), .S(1'b0), .A2(A2), .X(X));
+				assign A = A2;
+			end
+			Shift5: begin
+				SHIFT shift5(.A(A), .B(B), .X(X), .A2(A2), .B2(B2));
+				assign A = A2;
+				assign B = B2;
+			end
+			Add6: begin
+				if(M==1): ADD add6(.A(A), .S(S), .A2(A2), .X(X));
+				else: ADD add6(.A(A), .S(1'b0), .A2(A2), .X(X));
+				assign A = A2;
+			end
+			Shift6: begin
+				SHIFT shift6(.A(A), .B(B), .X(X), .A2(A2), .B2(B2));
+				assign A = A2;
+				assign B = B2;
+			end
+			Add7: begin
+				if(M==1): ADD add7(.A(A), .S(S), .A2(A2), .X(X));
+				else: ADD add7(.A(A), .S(1'b0), .A2(A2), .X(X));
+				assign A = A2;
+			end
+			Shift7: begin
+				SHIFT shift7(.A(A), .B(B), .X(X), .A2(A2), .B2(B2));
+				assign A = A2;
+				assign B = B2;
+			end
+			Add8: begin
+				ADD add8(.A(A), .S(S), .A2(A2), .X(X));
+				assign A = A2;
+			end
+			Sub: begin
+				SUBTRACT sub(.A(A), .S(S), .A2(A2), .X(X));
+				assign A = A2;
+			end
+			Shift8: begin
+				SHIFT shift8(.A(A), .B(B), .X(X), .A2(A2), .B2(B2));
+				assign A = A2;
+				assign B = B2;
+			end
+			CL: begin
+				ADD add8(.A(A), .S(S), .A2(A2), .X(X));
+				assign A = A2;
+			end
+			default:  //default case, can also have default assignments for Ld_A and Ld_B before case
+		endcase
+    end
+
+endmodule
+
+	
+	
+	
+module ADD (
+	input logic [7:0] A, S,
+	output logic [7:0] A2,
+	output logic X
+);
+	logic [8:0] C;
+	assign C[0]=1b'0;
+	logic [7:0] temp;
+	
+	full_adder fa0(.A(A[0]), .B(S[0]), .Cin(C[0]), .S(temp[0]), .Cout(C[1]));
+	full_adder fa1(.A(A[1]), .B(S[1]), .Cin(C[1]), .S(temp[1]), .Cout(C[2]));
+	full_adder fa2(.A(A[2]), .B(S[2]), .Cin(C[2]), .S(temp[2]), .Cout(C[3]));
+	full_adder fa3(.A(A[3]), .B(S[3]), .Cin(C[3]), .S(temp[3]), .Cout(C[4]));
+	full_adder fa4(.A(A[4]), .B(S[4]), .Cin(C[4]), .S(temp[4]), .Cout(C[5]));
+	full_adder fa5(.A(A[5]), .B(S[5]), .Cin(C[5]), .S(temp[5]), .Cout(C[6]));
+	full_adder fa6(.A(A[6]), .B(S[6]), .Cin(C[6]), .S(temp[6]), .Cout(C[7]));
+	full_adder fa7(.A(A[7]), .B(S[7]), .Cin(C[7]), .S(temp[7]), .Cout(C[8]));
+	
+	assign A2 = temp;
+	assign X = C[8];
+	
+endmodule
+
+
+module SHIFT (
+	input logic[7:0] A, B,
+	input X,
+	output logic[7:0] A2, B2 
+);
+	B2[6:0] = B[7:1];
+	B2[7] = A[0];
+	A2[6:0] = A[7:1];
+	A2[7] = X;
+endmodule
+
+
+module SUBTRACT (
+	input logic [7:0] A, S,
+	output logic [7:0] A2,
+	output logic X
+);
+	logic [7:0] temp, temp2;
+	assign temp = ~S;
+	Add add(.A(temp), .S(1b'1), .A2(temp2), .X(X));
+	ADD add(.A(A), .S(temp2), .A2(A2), .X(X));
+
+endmodule
+
+
+module full_adder (input A, B, Cin, output logic S, Cout);
+	assign S=A^B^Cin;
+	assign Cout=(A&B)|(B&Cin)|(A&Cin);
+endmodule

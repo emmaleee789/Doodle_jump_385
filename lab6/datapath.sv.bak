@@ -1,0 +1,36 @@
+module datapath (
+    input logic Clk, Reset, 
+    input logic GateALU, GateMARMUX, GateMDR, GatePC, 
+    inout logic MIO_EN,
+    input logic LD_IR, LD_MAR, LD_MDR, LD_PC, LD_BEN, LD_CC, LD_REG, LD_LED,
+    input logic [1:0] PCMUX, ADDR2MUX, ALUK,
+    input logic [15:0] PC, MDR_In, 
+    inout logic [19:0] ADDR
+);
+    /* everything with 16 bits needed to pass through the main bus */
+    logic [15:0] bus;
+
+    logic [15:0] PC_wire;
+    logic [15:0] MAR_wire;
+    logic [15:0] MDR_wire;
+    logic [15:0] IRout;
+
+    assign PC_next = PC + 1;
+    
+    /* register file: */
+    logic [2:0] DR, SR1, SR2;
+    //Reg R0(.*, .LD_R(LD_REG), .Rin(bus), .Rout(R0));
+
+    Reg pc0(.*, .LD_R(LD_PC), .Rin(PC_wire), .Rout(PC));
+    Reg mar0(.*, .LD_R(LD_MAR), .Rin(bus), .Rout(ADDR[15:0]));
+    Reg mdr0(.*, .LD_R(LD_MDR), .Rin(MDR_wire), .Rout(MDR));
+    Reg ir0(.*, .LD_R(LD_IR), .Rin(bus), .Rout(IRout));
+
+    Reg #(.N(3)) nzp(.*, .LD_R(1'b1), .Rin(), .Rout());
+    Reg #(.N(0)) ben(.*, .LD_R(LD_BEN), .Rin(), .Rout(BEN));
+
+    PC_mux pc_mux0(.*, .sel(PCMUX), .Bus_val(bus), .Calc_addr(), .PC_next(PC_next), .PC_val(PC_wire));
+    MDR_mux mdr_mux0(.*, .MIO_EN(MIO_EN), .Bus_val(bus), .MDR_In(MDR_In), .MDRout(MDR_wire));
+    bus_mux bus_mux0(.*);
+
+endmodule

@@ -1,0 +1,62 @@
+module PC_mux (
+    input logic Reset,
+    input logic [1:0] sel,
+    input logic [15:0] Bus_val, Calc_addr, PC_next,
+    output logic [15:0] PC_val
+);
+    always_comb
+    begin
+        if (Reset)
+            PC_val = 16'b0;
+        else if (sel == 0)
+            PC_val = PC_next; 
+        else if (sel == 1)
+            PC_val = Bus_val;
+        else if (sel == 2)     
+            PC_val = Calc_addr;
+        else
+            PC_val = 16'b0;
+    end
+endmodule
+
+
+module MDR_mux (
+    input logic Reset,
+    input logic MIO_EN,
+    input logic [15:0] Bus_val, MDR_In,
+    output logic [15:0] MDRout
+);
+    always_comb
+    begin
+        if (Reset)
+            MDRout = 16'b0;
+        else if (!MIO_EN)
+            MDRout = Bus_val;
+        else
+            MDRout = MDR_In;
+    end
+endmodule
+
+
+module bus_mux(
+    input logic Reset, GateALU, GateMARMUX, GateMDR, GatePC,
+    input logic [15:0] ALU, MARMUX, MDR, PC,
+    output logic [15:0] bus
+);
+    always_comb
+    begin
+        if (Reset)
+            bus = 16'b0;
+        else if (GateMARMUX)
+            bus = 16'b0; // TODO in week 2
+        else if (GatePC)
+            bus = PC;
+        else if (GateMDR)
+            bus = MDR;
+        else if (GateALU)
+            bus = ALU;
+        else 
+            bus = 16'b0;
+    end
+endmodule
+

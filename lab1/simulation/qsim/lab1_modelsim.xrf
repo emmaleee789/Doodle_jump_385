@@ -1,0 +1,15 @@
+vendor_name = ModelSim
+source_file = 1, C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab1.bdf
+source_file = 1, C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab1.vwf
+source_file = 1, C:/Users/kangx/Documents/_Project/ECE_385_sp24/Block2.bdf
+source_file = 1, e:/tools/intelfpga/18.1/quartus/libraries/others/maxplus2/7400.bdf
+design_name = Block2
+instance = comp, \Z1~output , Z1~output, Block2, 1
+instance = comp, \C1~input , C1~input, Block2, 1
+instance = comp, \B1~input , B1~input, Block2, 1
+instance = comp, \A1~input , A1~input, Block2, 1
+instance = comp, \inst8|4~0 , inst8|4~0, Block2, 1
+design_name = hard_block
+instance = comp, \~ALTERA_ASDO_DATA1~~ibuf , ~ALTERA_ASDO_DATA1~~ibuf, hard_block, 1
+instance = comp, \~ALTERA_FLASH_nCE_nCSO~~ibuf , ~ALTERA_FLASH_nCE_nCSO~~ibuf, hard_block, 1
+instance = comp, \~ALTERA_DATA0~~ibuf , ~ALTERA_DATA0~~ibuf, hard_block, 1

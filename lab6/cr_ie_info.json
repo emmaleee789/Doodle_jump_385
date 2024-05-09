@@ -1,0 +1,22 @@
+{
+	"system" : {
+		"platform" : "windows64",
+		"os_name" : "Windows 10",
+		"os_version" : "10.0"
+	},
+	"error" : {
+		"executable" : "quartus_npp",
+		"comment" : "not_applicable",
+		"error_message" : "component_package != 0",
+		"source_file" : "/quartus/nlv/npp/npp_cmd.cpp",
+		"line" : "311",
+		"stack_trace" : "\t0x7ff69a093c3d: quartus_npp + 0x3c3d (?execute@NPP_FRAMEWORK@@UEAA_NXZ + 0x6d)\n\t0x7fffe98912bc: comp_qexe + 0x112bc (qexe_do_normal + 0x1ec)\n\t0x7fffe9896142: comp_qexe + 0x16142 (qexe_run + 0x432)\n\t0x7fffe9896e51: comp_qexe + 0x16e51 (?qexe_standard_main@@YAHPEAVQEXE_FRAMEWORK@@PEAPEBUQEXE_OPTION_DEFINITION@@HPEAPEBD@Z + 0xc1)\n\t0x7ff69a094327: quartus_npp + 0x4327 (?npp_main@@YAHHPEAPEBD@Z + 0x87)\n\t0x7fffd2962e98: CCL_MSG + 0x12e98 (?msg_main_thread@@YAPEAXPEAX@Z + 0x18)\n\t0x7fffd296467e: CCL_MSG + 0x1467e (?msg_thread_wrapper@@YAPEAXP6APEAXPEAX@Z0@Z + 0x6e)\n\t0x7fffd6fa6660: ccl_mem + 0x16660 (?mem_thread_wrapper@@YAPEAXP6APEAXPEAX@Z0@Z + 0x70)\n\t0x7fffd2962761: CCL_MSG + 0x12761 (?msg_exe_main@@YAHHPEAPEBDP6AHH0@Z@Z + 0xa1)\n\t0x7ff69a122b5e: quartus_npp + 0x92b5e (__tmainCRTStartup + 0x10e)\n\t0x7ffffc2b257c: KERNEL32 + 0x1257c (BaseThreadInitThunk + 0x1c)\n\t0x7ffffe1caa57: ntdll + 0x5aa57 (RtlUserThreadStart + 0x27)\n",
+		"subsystem" : "NPP"
+	},
+	"quartus" : {
+		"quartus_bits" : "64",
+		"version" : "18.1.0",
+		"build" : "625",
+		"edition" : "Lite Edition"
+	}
+}

@@ -1,0 +1,2 @@
+Warning (10273): Verilog HDL warning at HexDriver.sv(23): extended using "x" or "z" File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/HexDriver.sv Line: 23
+Info (10281): Verilog HDL Declaration information at lab5_toplevel.sv(9): object "Add" differs only in case from object "add" in the same scope File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/lab5_toplevel.sv Line: 9

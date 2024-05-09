@@ -1,0 +1,85 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/simulation/modelsim
+vhard_block
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1710491305
+!i10b 1
+!s100 4;5I7YIWP<M?DkkKfzjZF3
+IGQX1E3]G;U>h6aI:TDD9:2
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 !s105 lab4_7_1200mv_85c_slow_svo_unit
+S1
+R0
+Z5 w1710491111
+Z6 8lab4_7_1200mv_85c_slow.svo
+Z7 Flab4_7_1200mv_85c_slow.svo
+L0 5949
+Z8 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z9 !s108 1710491305.000000
+Z10 !s107 lab4_7_1200mv_85c_slow.svo|
+Z11 !s90 -reportprogress|300|-sv|-work|work|+incdir+.|lab4_7_1200mv_85c_slow.svo|
+!i113 1
+Z12 o-sv -work work
+Z13 !s92 -sv -work work +incdir+.
+Z14 tCvgOpt 0
+vlab4_adders_toplevel
+R1
+R2
+!i10b 1
+!s100 9gf`Ai9>??Pa^VGRbj>5[3
+IYcBHNaCKGNPNH4_D^oR^<1
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 31
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+vtestbench
+R1
+!s110 1710491306
+!i10b 1
+!s100 cHn3>7M4Azd4N4L[hSH[D1
+IkR?YU[AB;BXhQEhnH8liz0
+R3
+!s105 testbench_adder_sv_unit
+S1
+R0
+w1709278426
+8C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/testbench_adder.sv
+FC:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/testbench_adder.sv
+L0 5
+R8
+r1
+!s85 0
+31
+!s108 1710491306.000000
+!s107 C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/testbench_adder.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2|C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2/testbench_adder.sv|
+!i113 1
+R12
+!s92 -sv -work work +incdir+C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab4.2
+R14

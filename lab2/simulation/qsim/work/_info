@@ -1,0 +1,75 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/kangx/Documents/_Project/ECE_385_sp24/lab2/simulation/qsim
+vhard_block
+Z1 !s110 1706417445
+!i10b 1
+!s100 A[DX?2O`W7_BOW7_jAT9z2
+IGS2nii2eV?RYg=]GzO2IE1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1706417434
+Z4 8lab2.vo
+Z5 Flab2.vo
+L0 1254
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1706417444.000000
+Z8 !s107 lab2.vo|
+Z9 !s90 -work|work|lab2.vo|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+vLab2
+R1
+!i10b 1
+!s100 42fkdVcYhf_mb8EhhIzK^2
+I1K:6bOGSnL5?agZ<ie48D3
+R2
+R0
+R3
+R4
+R5
+L0 31
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+n@lab2
+vLab2_vlg_vec_tst
+R1
+!i10b 1
+!s100 cz]TBN]0iT>=KS<A7HZSJ3
+IS5APbGE@VUYKfo5:>SzzR0
+R2
+R0
+w1706417432
+8Waveform3.vwf.vt
+FWaveform3.vwf.vt
+L0 29
+R6
+r1
+!s85 0
+31
+!s108 1706417445.000000
+!s107 Waveform3.vwf.vt|
+!s90 -work|work|Waveform3.vwf.vt|
+!i113 1
+R10
+R11
+n@lab2_vlg_vec_tst

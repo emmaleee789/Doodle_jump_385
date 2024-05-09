@@ -1,0 +1,407 @@
+Analysis & Synthesis report for lab5
+Tue Mar 19 18:23:26 2024
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |lab5_toplevel|control:control_unit|curr_state
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Port Connectivity Checks: "ADD8:add|full_adder:fa8"
+ 13. Post-Synthesis Netlist Statistics for Top Partition
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
+ 16. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Tue Mar 19 18:23:26 2024       ;
+; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                      ; lab5                                        ;
+; Top-level Entity Name              ; lab5_toplevel                               ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 106                                         ;
+;     Total combinational functions  ; 106                                         ;
+;     Dedicated logic registers      ; 38                                          ;
+; Total registers                    ; 38                                          ;
+; Total pins                         ; 57                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                            ; lab5_toplevel      ; lab5               ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 22          ;
+; Maximum allowed            ; 16          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 16          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-16        ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                             ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                         ; Library ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------+---------+
+; shift_reg.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/shift_reg.sv     ;         ;
+; Control.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/Control.sv       ;         ;
+; HexDriver.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/HexDriver.sv     ;         ;
+; lab5_toplevel.sv                 ; yes             ; User SystemVerilog HDL File  ; C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/lab5_toplevel.sv ;         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 106       ;
+;                                             ;           ;
+; Total combinational functions               ; 106       ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 74        ;
+;     -- 3 input functions                    ; 7         ;
+;     -- <=2 input functions                  ; 25        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 106       ;
+;     -- arithmetic mode                      ; 0         ;
+;                                             ;           ;
+; Total registers                             ; 38        ;
+;     -- Dedicated logic registers            ; 38        ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 57        ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; Clk~input ;
+; Maximum fan-out                             ; 38        ;
+; Total fan-out                               ; 565       ;
+; Average fan-out                             ; 2.19      ;
++---------------------------------------------+-----------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                           ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------+---------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                    ; Entity Name   ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------+---------------+--------------+
+; |lab5_toplevel             ; 106 (1)             ; 38 (0)                    ; 0           ; 0            ; 0       ; 0         ; 57   ; 0            ; |lab5_toplevel                         ; lab5_toplevel ; work         ;
+;    |ADD8:add|              ; 22 (7)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab5_toplevel|ADD8:add                ; ADD8          ; work         ;
+;       |full_adder:fa0|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab5_toplevel|ADD8:add|full_adder:fa0 ; full_adder    ; work         ;
+;       |full_adder:fa1|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab5_toplevel|ADD8:add|full_adder:fa1 ; full_adder    ; work         ;
+;       |full_adder:fa2|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab5_toplevel|ADD8:add|full_adder:fa2 ; full_adder    ; work         ;
+;       |full_adder:fa3|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab5_toplevel|ADD8:add|full_adder:fa3 ; full_adder    ; work         ;
+;       |full_adder:fa4|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab5_toplevel|ADD8:add|full_adder:fa4 ; full_adder    ; work         ;
+;       |full_adder:fa5|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab5_toplevel|ADD8:add|full_adder:fa5 ; full_adder    ; work         ;
+;       |full_adder:fa6|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab5_toplevel|ADD8:add|full_adder:fa6 ; full_adder    ; work         ;
+;       |full_adder:fa7|     ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab5_toplevel|ADD8:add|full_adder:fa7 ; full_adder    ; work         ;
+;    |HexDriver:HexAL|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab5_toplevel|HexDriver:HexAL         ; HexDriver     ; work         ;
+;    |HexDriver:HexAU|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab5_toplevel|HexDriver:HexAU         ; HexDriver     ; work         ;
+;    |HexDriver:HexBL|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab5_toplevel|HexDriver:HexBL         ; HexDriver     ; work         ;
+;    |HexDriver:HexBU|       ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab5_toplevel|HexDriver:HexBU         ; HexDriver     ; work         ;
+;    |control:control_unit|  ; 30 (30)             ; 21 (21)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab5_toplevel|control:control_unit    ; control       ; work         ;
+;    |shift_reg:reg1|        ; 25 (25)             ; 17 (17)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab5_toplevel|shift_reg:reg1          ; shift_reg     ; work         ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------+---------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |lab5_toplevel|control:control_unit|curr_state                                                                                                                                                                                                                                                                                                                                                                     ;
++---------------------+-----------------+-----------------+------------------+-----------------+-------------------+---------------------+-----------------+-------------------+-----------------+-------------------+-----------------+-------------------+-----------------+-------------------+-----------------+-------------------+-----------------+-------------------+-----------------+-------------------+-----------------+
+; Name                ; curr_state.Done ; curr_state.CALB ; curr_state.Start ; curr_state.Add1 ; curr_state.Shift8 ; curr_state.Subtract ; curr_state.Add8 ; curr_state.Shift7 ; curr_state.Add7 ; curr_state.Shift6 ; curr_state.Add6 ; curr_state.Shift5 ; curr_state.Add5 ; curr_state.Shift4 ; curr_state.Add4 ; curr_state.Shift3 ; curr_state.Add3 ; curr_state.Shift2 ; curr_state.Add2 ; curr_state.Shift1 ; curr_state.Stop ;
++---------------------+-----------------+-----------------+------------------+-----------------+-------------------+---------------------+-----------------+-------------------+-----------------+-------------------+-----------------+-------------------+-----------------+-------------------+-----------------+-------------------+-----------------+-------------------+-----------------+-------------------+-----------------+
+; curr_state.Stop     ; 0               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ;
+; curr_state.Shift1   ; 0               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 1                 ; 1               ;
+; curr_state.Add2     ; 0               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ; 0                 ; 1               ;
+; curr_state.Shift2   ; 0               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 1                 ; 0               ; 0                 ; 1               ;
+; curr_state.Add3     ; 0               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.Shift3   ; 0               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 1                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.Add4     ; 0               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.Shift4   ; 0               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 1                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.Add5     ; 0               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.Shift5   ; 0               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 1                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.Add6     ; 0               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 1               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.Shift6   ; 0               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 1                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.Add7     ; 0               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 1               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.Shift7   ; 0               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 1                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.Add8     ; 0               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 1               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.Subtract ; 0               ; 0               ; 0                ; 0               ; 0                 ; 1                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.Shift8   ; 0               ; 0               ; 0                ; 0               ; 1                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.Add1     ; 0               ; 0               ; 0                ; 1               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.Start    ; 0               ; 0               ; 1                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.CALB     ; 0               ; 1               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
+; curr_state.Done     ; 1               ; 0               ; 0                ; 0               ; 0                 ; 0                   ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 0               ; 0                 ; 1               ;
++---------------------+-----------------+-----------------+------------------+-----------------+-------------------+---------------------+-----------------+-------------------+-----------------+-------------------+-----------------+-------------------+-----------------+-------------------+-----------------+-------------------+-----------------+-------------------+-----------------+-------------------+-----------------+
+
+
++------------------------------------------------------------+
+; Registers Removed During Synthesis                         ;
++---------------------------------------+--------------------+
+; Register name                         ; Reason for Removal ;
++---------------------------------------+--------------------+
+; control:control_unit|curr_state~2     ; Lost fanout        ;
+; control:control_unit|curr_state~3     ; Lost fanout        ;
+; control:control_unit|curr_state~4     ; Lost fanout        ;
+; control:control_unit|curr_state~5     ; Lost fanout        ;
+; control:control_unit|curr_state~6     ; Lost fanout        ;
+; control:control_unit|curr_state~7     ; Lost fanout        ;
+; control:control_unit|curr_state~8     ; Lost fanout        ;
+; control:control_unit|curr_state~9     ; Lost fanout        ;
+; Total Number of Removed Registers = 8 ;                    ;
++---------------------------------------+--------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 38    ;
+; Number of registers using Synchronous Clear  ; 4     ;
+; Number of registers using Synchronous Load   ; 1     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 16    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |lab5_toplevel|shift_reg:reg1|B2[0]            ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |lab5_toplevel|shift_reg:reg1|A2[6]            ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |lab5_toplevel|control:control_unit|curr_state ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |lab5_toplevel|control:control_unit|curr_state ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "ADD8:add|full_adder:fa8" ;
++------+--------+----------+--------------------------+
+; Port ; Type   ; Severity ; Details                  ;
++------+--------+----------+--------------------------+
+; Cout ; Output ; Info     ; Explicitly unconnected   ;
++------+--------+----------+--------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 57                          ;
+; cycloneiii_ff         ; 38                          ;
+;     ENA               ; 16                          ;
+;     SCLR              ; 3                           ;
+;     SCLR SLD          ; 1                           ;
+;     plain             ; 18                          ;
+; cycloneiii_lcell_comb ; 110                         ;
+;     normal            ; 110                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 4                           ;
+;         2 data inputs ; 24                          ;
+;         3 data inputs ; 7                           ;
+;         4 data inputs ; 74                          ;
+;                       ;                             ;
+; Max LUT depth         ; 11.00                       ;
+; Average LUT depth     ; 4.29                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Tue Mar 19 18:23:15 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab5 -c lab5
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 2 design units, including 2 entities, in source file shift_reg.sv
+    Info (12023): Found entity 1: shift_reg File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/shift_reg.sv Line: 1
+    Info (12023): Found entity 2: flip File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/shift_reg.sv Line: 44
+Info (12021): Found 1 design units, including 1 entities, in source file control.sv
+    Info (12023): Found entity 1: control File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/Control.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file hexdriver.sv
+    Info (12023): Found entity 1: HexDriver File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/HexDriver.sv Line: 1
+Info (12021): Found 3 design units, including 3 entities, in source file lab5_toplevel.sv
+    Info (12023): Found entity 1: lab5_toplevel File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/lab5_toplevel.sv Line: 1
+    Info (12023): Found entity 2: ADD8 File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/lab5_toplevel.sv Line: 49
+    Info (12023): Found entity 3: full_adder File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/lab5_toplevel.sv Line: 74
+Info (12021): Found 1 design units, including 1 entities, in source file testbench.sv
+    Info (12023): Found entity 1: testbench File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/testbench.sv Line: 1
+Info (12127): Elaborating entity "lab5_toplevel" for the top level hierarchy
+Info (12128): Elaborating entity "shift_reg" for hierarchy "shift_reg:reg1" File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/lab5_toplevel.sv Line: 20
+Info (12128): Elaborating entity "ADD8" for hierarchy "ADD8:add" File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/lab5_toplevel.sv Line: 22
+Info (12128): Elaborating entity "full_adder" for hierarchy "ADD8:add|full_adder:fa0" File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/lab5_toplevel.sv Line: 61
+Info (12128): Elaborating entity "control" for hierarchy "control:control_unit" File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/lab5_toplevel.sv Line: 29
+Warning (10270): Verilog HDL Case Statement warning at Control.sv(62): incomplete case statement has no default case item File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/Control.sv Line: 62
+Info (10264): Verilog HDL Case Statement information at Control.sv(62): all case item expressions in this case statement are onehot File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/Control.sv Line: 62
+Info (12128): Elaborating entity "HexDriver" for hierarchy "HexDriver:HexAL" File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/lab5_toplevel.sv Line: 35
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 8 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/output_files/lab5.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 163 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 12 input pins
+    Info (21059): Implemented 45 output pins
+    Info (21061): Implemented 106 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 4842 megabytes
+    Info: Processing ended: Tue Mar 19 18:23:26 2024
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:03
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/kangx/Documents/_Project/ECE_385_sp24/lab5/output_files/lab5.map.smsg.
+
+
