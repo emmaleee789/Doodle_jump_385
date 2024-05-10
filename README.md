@@ -5,3 +5,8 @@ Any violation to academic integration will not be allowed.
 
 ## Final Project: Doodle Jump
 
+
+
+### Reference:  
+https://github.com/opengateware-modules/video-framebuffer/tree/master  
+https://github.com/atrifex/ECE385-HelperTools/tree/master  
