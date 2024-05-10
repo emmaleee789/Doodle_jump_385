@@ -2,11 +2,11 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>2024-5-9 14:43:20</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1715237000866</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>2024-5-10 15:20:21</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1715325621468</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\kangx\Documents\_Project\ECE_385_sp24\Final\software\Final_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
-        <SopcDesignFile>..\..\lab9_soc.sopcinfo</SopcDesignFile>
+        <SopcDesignFile>..\..\lab8_soc.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>nios2_gen2_0</Cpu>
         <SchemaVersion>1.9</SchemaVersion>
@@ -900,74 +900,68 @@
         </Setting>
         <MemoryMap>
                 <slaveDescriptor>onchip_memory2_0</slaveDescriptor>
-                <addressRange>0x00000000 - 0x00000FFF</addressRange>
-                <addressSpan>4096</addressSpan>
+                <addressRange>0x00000000 - 0x0000000F</addressRange>
+                <addressSpan>16</addressSpan>
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>otg_hpi_reset</slaveDescriptor>
-                <addressRange>0x00003010 - 0x0000301F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>otg_hpi_cs</slaveDescriptor>
-                <addressRange>0x00003020 - 0x0000302F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>otg_hpi_w</slaveDescriptor>
-                <addressRange>0x00003030 - 0x0000303F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>otg_hpi_r</slaveDescriptor>
-                <addressRange>0x00003040 - 0x0000304F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>otg_hpi_data</slaveDescriptor>
-                <addressRange>0x00003050 - 0x0000305F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>otg_hpi_address</slaveDescriptor>
-                <addressRange>0x00003060 - 0x0000306F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>keycode</slaveDescriptor>
-                <addressRange>0x00003070 - 0x0000307F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
                 <slaveDescriptor>sdram_pll</slaveDescriptor>
-                <addressRange>0x00003080 - 0x0000308F</addressRange>
+                <addressRange>0x00000030 - 0x0000003F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>sysid_qsys_0</slaveDescriptor>
-                <addressRange>0x00003098 - 0x0000309F</addressRange>
+                <addressRange>0x00000058 - 0x0000005F</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>jtag_uart_0</slaveDescriptor>
-                <addressRange>0x000030A0 - 0x000030A7</addressRange>
+                <addressRange>0x00000060 - 0x00000067</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>VGA_text_mode_controller_0</slaveDescriptor>
-                <addressRange>0x08000000 - 0x08003FFF</addressRange>
-                <addressSpan>16384</addressSpan>
+                <slaveDescriptor>keycode</slaveDescriptor>
+                <addressRange>0x00000070 - 0x0000007F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>otg_hpi_address</slaveDescriptor>
+                <addressRange>0x00000080 - 0x0000008F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>otg_hpi_data</slaveDescriptor>
+                <addressRange>0x00000090 - 0x0000009F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>otg_hpi_r</slaveDescriptor>
+                <addressRange>0x000000A0 - 0x000000AF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>otg_hpi_w</slaveDescriptor>
+                <addressRange>0x000000B0 - 0x000000BF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>otg_hpi_cs</slaveDescriptor>
+                <addressRange>0x000000C0 - 0x000000CF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>otg_hpi_reset</slaveDescriptor>
+                <addressRange>0x000000D0 - 0x000000DF</addressRange>
+                <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>

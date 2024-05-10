@@ -5,11 +5,8 @@
   <columns>
    <connections preferredWidth="175" />
    <irq preferredWidth="34" />
-   <name preferredWidth="497" />
-   <baseaddress preferredWidth="438" />
-   <endaddress preferredWidth="257" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Library" />
- <window width="3146" height="2010" x="-13" y="-13" />
+ <library expandedCategories="Library,Project" />
+ <window width="2194" height="1401" x="0" y="0" />
 </preferences>

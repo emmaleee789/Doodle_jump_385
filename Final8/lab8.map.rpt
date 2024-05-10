@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lab8
-Fri May 10 14:25:53 2024
+Fri May 10 14:36:54 2024
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -336,7 +336,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri May 10 14:25:53 2024       ;
+; Analysis & Synthesis Status        ; Successful - Fri May 10 14:36:54 2024       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; lab8                                        ;
 ; Top-level Entity Name              ; lab8                                        ;
@@ -452,7 +452,7 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.1%      ;
+;     Processor 2            ;   0.0%      ;
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
@@ -7794,7 +7794,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:06     ;
+; Top            ; 00:00:11     ;
 +----------------+--------------+
 
 
@@ -7804,7 +7804,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Fri May 10 14:25:11 2024
+    Info: Processing started: Fri May 10 14:35:44 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab8 -c lab8
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -8208,7 +8208,7 @@ Warning (12125): Using design file palette_mapper.sv, which is not specified as 
 Info (12128): Elaborating entity "palette_mapper" for hierarchy "vga_screen:vga_screen0|palette_mapper:palette_mapper_instance" File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/Final8/vga_screen.sv Line: 127
 Info (12128): Elaborating entity "HexDriver" for hierarchy "HexDriver:hex_inst_0" File: C:/Users/kangx/Documents/_Project/ECE_385_sp24/Final8/lab8.sv Line: 123
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2024.05.10.14:25:36 Progress: Loading sld2dead247/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2024.05.10.14:36:27 Progress: Loading sld2dead247/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -8342,10 +8342,10 @@ Info (21057): Implemented 5124 device resources after synthesis - the final reso
     Info (21064): Implemented 444 RAM segments
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 74 warnings
-    Info: Peak virtual memory: 5169 megabytes
-    Info: Processing ended: Fri May 10 14:25:53 2024
-    Info: Elapsed time: 00:00:42
-    Info: Total CPU time (on all processors): 00:00:09
+    Info: Peak virtual memory: 5181 megabytes
+    Info: Processing ended: Fri May 10 14:36:54 2024
+    Info: Elapsed time: 00:01:10
+    Info: Total CPU time (on all processors): 00:00:11
 
 
 +------------------------------------------+

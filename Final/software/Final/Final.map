@@ -214,7 +214,7 @@ errno               0x4               c:/intelfpga_lite/18.0/nios2eds/bin/gnu/h-
 Memory Configuration
 
 Name             Origin             Length             Attributes
-onchip_memory2_0 0x0000000000000000 0x0000000000001000
+onchip_memory2_0 0x0000000000000000 0x0000000000000010
 reset            0x0000000010000000 0x0000000000000020
 sdram            0x0000000010000020 0x0000000007ffffe0
 *default*        0x0000000000000000 0xffffffffffffffff

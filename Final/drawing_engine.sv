@@ -1,5 +1,6 @@
 module drawing_engine (
     input Clk, frame_clk, Reset,
+    input [1:0] frame_clk_edge,
     input W, H,
     input [9:0] Doodle_X, Doodle_Y,
     input buffer_using, wr_en,
@@ -21,11 +22,6 @@ module drawing_engine (
     //     .addr(img_addr), .data(img_data)
     // );
     
-    // Detect rising edge of frame_clk
-    logic [1:0] frame_clk_edge;
-        always_ff @ (posedge Clk) begin
-        frame_clk_edge = {frame_clk_edge[0], frame_clk};
-    end
 
     always_ff @ (posedge Clk) begin
         if(Reset) begin
@@ -35,32 +31,32 @@ module drawing_engine (
             draw_x <= 0;
             draw_y <= 0;
             draw_color <= 0;
-            frame_done <= 0;
+            frame_done <= 1;
         end
-        if(frame_clk_edge==2'b01 && frame_done) begin
+        if(frame_clk_edge==2'b01) begin
             frame_done <= 0; //start new frame
             //frame_start <= 1;
             draw_buffer <= 1;
-            draw_x <= buffer_using? 10: 11;
-            draw_y <= 10;
-            draw_color <= buffer_using? 8'b00110000: 8'b00001100; //buffer state 红/绿
+            draw_x <= buffer_using? 270: 272;
+            draw_y <= 15;
+            draw_color <= buffer_using? 8'b00110100: 8'b00001101; //buffer state 红/绿
         end
         if(wr_en) begin
             if(draw_buffer) begin
                 draw_buffer <= 0;
                 draw_bg <= 1; //start drawing background
                 draw_x <= 80;
-                draw_y <= 0;
+                draw_y <= 1;
                 draw_color <= 8'b00111111; //background color
             end
             if(draw_bg) begin
                 if(draw_x >= 239) begin
-                    if(draw_y >= 239) begin 
+                    if(draw_y >= 238) begin 
                         draw_bg <= 0; //background done
                         draw_platform <= 1; //start drawing platform
                         draw_x <= 180;
                         draw_y <= 130;
-                        draw_color <= 8'b00000111; //platform color 青色
+                        draw_color <= 8'b00000111; //platform color 蓝色
                     end
                     else begin //draw next row
                         draw_x <= 80;
@@ -72,7 +68,7 @@ module drawing_engine (
                 end
             end
             if(draw_platform) begin
-                if(draw_x >=190) begin
+                if(draw_x >=200) begin
                     draw_platform <= 0; //platform done
                     draw_doodle <= 1; //start drawing doodle
                     draw_x <= Doodle_X;
@@ -82,8 +78,8 @@ module drawing_engine (
                 else draw_x <= draw_x+1;
             end
             if(draw_doodle) begin
-                if(draw_x >= Doodle_X+6) begin
-                    if(draw_y >= Doodle_Y+8) begin
+                if(draw_x >= Doodle_X+9) begin
+                    if(draw_y >= Doodle_Y+9) begin
                         draw_doodle <= 0;
                         // draw_x = 1'bZ;
                         // draw_y = 1'bZ;

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="175" />
+   <irq preferredWidth="34" />
+   <name preferredWidth="497" />
+   <baseaddress preferredWidth="438" />
+   <endaddress preferredWidth="257" />
+  </columns>
+ </systemtable>
+ <library expandedCategories="Project,Library" />
+ <window width="3146" height="2010" x="-13" y="-13" />
+</preferences>

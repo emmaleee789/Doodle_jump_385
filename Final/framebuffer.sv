@@ -54,7 +54,7 @@ module framebuffer
         input  logic          clk_pix,       //! Core Pixel Clock
         input  logic          clk_vga,       //! VGA Output Clock
         // Video Input
-        input logic [$clog2(WIDHT)-1:0] x, y, //pixel position
+        input logic [9:0] x, y, //pixel position
         input  logic [DW-1:0] rgb_in,        //! RGB Video Input
         input  logic          hblank_in,     //! Horizontal Blank
         input  logic          vblank_in,     //! Vertical Blank
@@ -124,6 +124,7 @@ module framebuffer
     localparam AW = $clog2(WIDHT * HEIGHT);   //! Minimum width required to address the number of pixels for a given framebuffer.
 
     assign pixel_clock = SYS_CLK == 1 ? clk_sys : clk_pix;
+    assign pixel_wr_addr = (y*hc_max) + x;
 
     // Manages the process of buffer writing, and controls the horizontal and vertical counts with respect to the pixel clock and blank signals.
     // Additionally, it computes the memory address to write the next pixel from the input.
@@ -156,9 +157,9 @@ module framebuffer
         if(edge_clk_ena == 2'b01 || SYS_CLK == 0) begin
             // new pixel, so, let's start getting the memory address on our register before we update counters
             //wr_result_v = (i_vcnt * hc_max) + i_hcnt;
-            wr_result_v = (y*hc_max) + x; /////////////////////////////////////////////////////////////////////////////
+            //wr_result_v = (y*hc_max) + x; /////////////////////////////////////////////////////////////////////////////
             // and move that value to the address vector of framebuffers write operation
-            pixel_wr_addr <= wr_result_v[AW-1:0];
+            //pixel_wr_addr = wr_result_v[AW-1:0];
 
             edge_hs = {edge_hs[0], hblank_in}; // Are we on Hblank?
             edge_vs = {edge_vs[0], vblank_in}; // or on Vblank?
@@ -195,7 +196,7 @@ module framebuffer
             if(edge_hs == 2'b01) begin i_vcnt <= i_vcnt + 1; end // update vertical input count
 
             // If there is no blank period, meaning that the display is currently active, the pixel should be written to the buffer.
-            if(hblank_in == 1'b0 && vblank_in == 1'b0) begin
+            // if(hblank_in == 1'b0 && vblank_in == 1'b0) begin
                 // If a double frame buffer is being used, we need to determine which buffer is currently active.
                 if(!disable_db && BUFF2X != 0) begin
                     if(buffer1_writing) begin      // If we are writing to the first buffer,
@@ -222,12 +223,12 @@ module framebuffer
                     buffer2_writing <= 1'b1; // Moreover, to avoid any potential issues in case a double framebuffer is later enabled, we set the buffer2_writing signal to 1.
                                              // This will ensure that the logic won't get stuck, and the system can be easily switched to double buffer mode if required.
                 end
-            end
-            else begin
-                // if on any blank period, nothing to write to any memory buffer
-                buffer1_wren <= 1'b0;
-                buffer2_wren <= 1'b0;
-            end
+            // end
+            // else begin
+            //     // if on any blank period, nothing to write to any memory buffer
+            //     buffer1_wren <= 1'b0;
+            //     buffer2_wren <= 1'b0;
+            // end
         end
     end
     assign wr_en = buffer1_wren | buffer2_wren;

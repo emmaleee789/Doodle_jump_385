@@ -1,10 +1,10 @@
 /*
  * linker.x - Linker script
  *
- * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'lab9_soc'
- * SOPC Builder design path: ../../lab9_soc.sopcinfo
+ * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'lab8_soc'
+ * SOPC Builder design path: ../../lab8_soc.sopcinfo
  *
- * Generated: Thu May 09 14:43:21 CST 2024
+ * Generated: Fri May 10 15:18:49 CST 2024
  */
 
 /*
@@ -50,7 +50,7 @@
 
 MEMORY
 {
-    onchip_memory2_0 : ORIGIN = 0x0, LENGTH = 4096
+    onchip_memory2_0 : ORIGIN = 0x0, LENGTH = 16
     reset : ORIGIN = 0x10000000, LENGTH = 32
     sdram : ORIGIN = 0x10000020, LENGTH = 134217696
 }

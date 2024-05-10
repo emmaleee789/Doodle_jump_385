@@ -77,9 +77,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  29 .quartus_project_dir 00000034  00000000  00000000  0007022c  2**0
                   CONTENTS, READONLY
- 30 .jdi          00004f1a  00000000  00000000  00070260  2**0
+ 30 .jdi          00005257  00000000  00000000  00070260  2**0
                   CONTENTS, READONLY
- 31 .sopcinfo     0007aafd  00000000  00000000  0007517a  2**0
+ 31 .sopcinfo     00072648  00000000  00000000  000754b7  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 10000000 l    d  .entry	00000000 .entry
@@ -957,40 +957,40 @@ void IO_init(void)
 10000270:	df000015 	stw	fp,0(sp)
 10000274:	d839883a 	mov	fp,sp
 	*otg_hpi_reset = 1;
-10000278:	008c0404 	movi	r2,12304
+10000278:	00803404 	movi	r2,208
 1000027c:	00c00044 	movi	r3,1
 10000280:	10c00005 	stb	r3,0(r2)
 	*otg_hpi_cs = 1;
-10000284:	008c0804 	movi	r2,12320
+10000284:	00803004 	movi	r2,192
 10000288:	00c00044 	movi	r3,1
 1000028c:	10c00005 	stb	r3,0(r2)
 	*otg_hpi_r = 1;
-10000290:	008c1004 	movi	r2,12352
+10000290:	00802804 	movi	r2,160
 10000294:	00c00044 	movi	r3,1
 10000298:	10c00005 	stb	r3,0(r2)
 	*otg_hpi_w = 1;
-1000029c:	008c0c04 	movi	r2,12336
+1000029c:	00802c04 	movi	r2,176
 100002a0:	00c00044 	movi	r3,1
 100002a4:	10c00005 	stb	r3,0(r2)
 	*otg_hpi_address = 0;
-100002a8:	008c1804 	movi	r2,12384
+100002a8:	00802004 	movi	r2,128
 100002ac:	10000015 	stw	zero,0(r2)
 	*otg_hpi_data = 0;
-100002b0:	008c1404 	movi	r2,12368
+100002b0:	00802404 	movi	r2,144
 100002b4:	10000015 	stw	zero,0(r2)
 	// Reset OTG chip
 	*otg_hpi_cs = 0;
-100002b8:	008c0804 	movi	r2,12320
+100002b8:	00803004 	movi	r2,192
 100002bc:	10000005 	stb	zero,0(r2)
 	*otg_hpi_reset = 0;
-100002c0:	008c0404 	movi	r2,12304
+100002c0:	00803404 	movi	r2,208
 100002c4:	10000005 	stb	zero,0(r2)
 	*otg_hpi_reset = 1;
-100002c8:	008c0404 	movi	r2,12304
+100002c8:	00803404 	movi	r2,208
 100002cc:	00c00044 	movi	r3,1
 100002d0:	10c00005 	stb	r3,0(r2)
 	*otg_hpi_cs = 1;
-100002d4:	008c0804 	movi	r2,12320
+100002d4:	00803004 	movi	r2,192
 100002d8:	00c00044 	movi	r3,1
 100002dc:	10c00005 	stb	r3,0(r2)
 
@@ -1018,27 +1018,27 @@ void IO_write(alt_u8 Address, alt_u16 Data)
 //*************************************************************************//
 
 	*otg_hpi_address = Address;
-10000310:	008c1804 	movi	r2,12384
+10000310:	00802004 	movi	r2,128
 10000314:	e0fffe03 	ldbu	r3,-8(fp)
 10000318:	10c00015 	stw	r3,0(r2)
 	*otg_hpi_data = Data;
-1000031c:	008c1404 	movi	r2,12368
+1000031c:	00802404 	movi	r2,144
 10000320:	e0ffff0b 	ldhu	r3,-4(fp)
 10000324:	10c00015 	stw	r3,0(r2)
 	*otg_hpi_cs = 0;
-10000328:	008c0804 	movi	r2,12320
+10000328:	00803004 	movi	r2,192
 1000032c:	10000005 	stb	zero,0(r2)
 	*otg_hpi_w = 0;
-10000330:	008c0c04 	movi	r2,12336
+10000330:	00802c04 	movi	r2,176
 10000334:	10000005 	stb	zero,0(r2)
 
 	// Reset
 	*otg_hpi_w = 1;
-10000338:	008c0c04 	movi	r2,12336
+10000338:	00802c04 	movi	r2,176
 1000033c:	00c00044 	movi	r3,1
 10000340:	10c00005 	stb	r3,0(r2)
 	*otg_hpi_cs = 1;
-10000344:	008c0804 	movi	r2,12320
+10000344:	00803004 	movi	r2,192
 10000348:	00c00044 	movi	r3,1
 1000034c:	10c00005 	stb	r3,0(r2)
 }
@@ -1065,28 +1065,28 @@ alt_u16 IO_read(alt_u8 Address)
 //							Write this function							   //
 //*************************************************************************//
 	*otg_hpi_address = Address;
-10000378:	008c1804 	movi	r2,12384
+10000378:	00802004 	movi	r2,128
 1000037c:	e0ffff03 	ldbu	r3,-4(fp)
 10000380:	10c00015 	stw	r3,0(r2)
 	*otg_hpi_cs = 0;
-10000384:	008c0804 	movi	r2,12320
+10000384:	00803004 	movi	r2,192
 10000388:	10000005 	stb	zero,0(r2)
 	*otg_hpi_r = 0;
-1000038c:	008c1004 	movi	r2,12352
+1000038c:	00802804 	movi	r2,160
 10000390:	10000005 	stb	zero,0(r2)
 
 	temp = *otg_hpi_data;
-10000394:	008c1404 	movi	r2,12368
+10000394:	00802404 	movi	r2,144
 10000398:	10800017 	ldw	r2,0(r2)
 1000039c:	e0bffe0d 	sth	r2,-8(fp)
 
 	// Reset
 	*otg_hpi_r = 1;
-100003a0:	008c1004 	movi	r2,12352
+100003a0:	00802804 	movi	r2,160
 100003a4:	00c00044 	movi	r3,1
 100003a8:	10c00005 	stb	r3,0(r2)
 	*otg_hpi_cs = 1;
-100003ac:	008c0804 	movi	r2,12320
+100003ac:	00803004 	movi	r2,192
 100003b0:	00c00044 	movi	r3,1
 100003b4:	10c00005 	stb	r3,0(r2)
 	return temp;
@@ -2522,7 +2522,7 @@ int main(void)
 		// We only need the first keycode, which is at the lower byte of keycode.
 		// Send the keycode to hardware via PIO.
 		*keycode_base = keycode & 0xff; 
-10000fc0:	008c1c04 	movi	r2,12400
+10000fc0:	00801c04 	movi	r2,112
 10000fc4:	e0fffd17 	ldw	r3,-12(fp)
 10000fc8:	10c00005 	stb	r3,0(r2)
 

@@ -1,10 +1,10 @@
 /*
  * linker.h - Linker script mapping information
  *
- * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'lab9_soc'
- * SOPC Builder design path: ../../lab9_soc.sopcinfo
+ * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'lab8_soc'
+ * SOPC Builder design path: ../../lab8_soc.sopcinfo
  *
- * Generated: Thu May 09 14:43:21 CST 2024
+ * Generated: Fri May 10 15:18:49 CST 2024
  */
 
 /*
@@ -66,7 +66,7 @@
  */
 
 #define ONCHIP_MEMORY2_0_REGION_BASE 0x0
-#define ONCHIP_MEMORY2_0_REGION_SPAN 4096
+#define ONCHIP_MEMORY2_0_REGION_SPAN 16
 #define RESET_REGION_BASE 0x10000000
 #define RESET_REGION_SPAN 32
 #define SDRAM_REGION_BASE 0x10000020

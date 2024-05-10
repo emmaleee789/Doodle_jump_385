@@ -1,0 +1,17 @@
+
+//#include "text_mode_vga.h"
+#include "text_mode_vga_color.h"
+#include "palette_test.h"
+
+int main() {
+
+	paletteTest();
+    
+    while(1){
+    	//textVGATest();
+
+        //textVGAColorScreenSaver();
+    }
+
+    return 0;
+}
