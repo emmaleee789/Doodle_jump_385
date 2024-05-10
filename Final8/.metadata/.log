@@ -2225,3 +2225,12 @@ Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING
 
 !ENTRY com.altera.sbtgui.launch 1 0 2024-05-09 21:43:42.471
 !MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x58 --id=0x0 --timestamp=1715250773 /cygdrive/c/Users/emmal/Desktop/ECE385/Final8/software/Final_8/Final_8.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-09 21:51:20.760
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-09 21:51:21.631
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x58 --id=0x0 --timestamp=1715250773]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-09 21:51:23.863
+!MESSAGE Executing: [C:/intelfpga_lite/18.0/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x58 --id=0x0 --timestamp=1715250773 /cygdrive/c/Users/emmal/Desktop/ECE385/Final8/software/Final_8/Final_8.elf]

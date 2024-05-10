@@ -238,6 +238,14 @@
          type = "String";
       }
    }
+   element vga_clk
+   {
+      datum _sortIndex
+      {
+         value = "14";
+         type = "int";
+      }
+   }
 }
 ]]></parameter>
  <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
@@ -260,6 +268,7 @@
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
+ <interface name="clk_0" internal="vga_clk.clk_in" />
  <interface
    name="keycode"
    internal="keycode.external_connection"
@@ -296,6 +305,7 @@
    type="conduit"
    dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
+ <interface name="reset_0" internal="vga_clk.clk_in_reset" />
  <interface name="sdram_clk" internal="sdram_pll.c1" type="clock" dir="start" />
  <interface name="sdram_wire" internal="sdram.wire" type="conduit" dir="end" />
  <module name="clk_0" kind="clock_source" version="18.0" enabled="1">
@@ -849,6 +859,12 @@
    version="18.0"
    enabled="1">
   <parameter name="id" value="0" />
+ </module>
+ <module name="vga_clk" kind="clock_source" version="18.0" enabled="0">
+  <parameter name="clockFrequency" value="25200000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
  <connection
    kind="avalon"

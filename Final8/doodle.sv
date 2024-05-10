@@ -17,11 +17,12 @@ module doodle (
     parameter [9:0] Doodle_Y_Min = 10'd1;       // Topmost point on the Y axis
     parameter [9:0] Doodle_Y_Max = H-2;     // Bottommost point on the Y axis 
     parameter [9:0] Doodle_X_Step = 10'd1;      // Step size on the X axis
-    parameter [9:0] Doodle_Y_Step = 10'd10;      // Step size on the Y axis, and can be either pos or neg
+    parameter [9:0] gravity = 10'd1;      // Step size on the Y axis
+    parameter [9:0] Doodle_Y_Step = 10'd1;      // Step size on the Y axis, and can be either pos or neg
     
     logic [9:0] Doodle_X_Pos, Doodle_X_Motion, Doodle_Y_Pos, Doodle_Y_Motion;
     logic [9:0] Doodle_X_Pos_in, Doodle_X_Motion_in, Doodle_Y_Pos_in, Doodle_Y_Motion_in;
-    
+    logic [9:0] jump_CD, jump_CD_in;
     int start;
 
     always_ff @ (posedge Clk)
@@ -30,8 +31,9 @@ module doodle (
             Doodle_X_Pos <= Doodle_X_Center;
             Doodle_Y_Pos <= Doodle_Y_Center;
             Doodle_X_Motion <= 0;
-            Doodle_Y_Motion <= Doodle_Y_Step;
-            start <= 1;
+            Doodle_Y_Motion <= -3;
+            jump_CD <= 0;
+            //start <= 1;
         end
         else if (Reset)
 		begin
@@ -46,6 +48,7 @@ module doodle (
             Doodle_Y_Pos <= Doodle_Y_Pos_in;
             Doodle_X_Motion <= Doodle_X_Motion_in;
             Doodle_Y_Motion <= Doodle_Y_Motion_in;
+            jump_CD = jump_CD_in;
         end
     end
     
@@ -57,45 +60,58 @@ module doodle (
         Doodle_Y_Pos_in = Doodle_Y_Pos;
         Doodle_X_Motion_in = Doodle_X_Motion;
         Doodle_Y_Motion_in = Doodle_Y_Motion;
+        jump_CD_in = jump_CD;
         
         // Update position and motion only at rising edge of frame clock
         if (frame_clk_edge ==2'b01)
 		begin
 			case (keycode)
-                8'h04: // left: A
+                8'h04: // A: left
                 begin
                     Doodle_X_Motion_in = (~(Doodle_X_Step) + 1'b1);
-                    //Doodle_Y_Motion_in = 0;
                 end
-                8'h07: // right: D
+                8'h07: // D: right
                 begin
                     Doodle_X_Motion_in = Doodle_X_Step;
-                    //Doodle_Y_Motion_in = 0;
+                end
+                8'h1C: // space: jump
+                begin
+                    if(jump_CD == 0) begin
+                        Doodle_Y_Motion_in = -3;
+                        jump_CD_in = 10;
+                    end 
+                    else ;
                 end
                 default: begin
                     Doodle_X_Motion_in = 0;
-                    //Doodle_Y_Motion_in = Doodle_Y_Step;
 				end
             endcase
 
+            if(jump_CD > 0) begin
+                jump_CD_in = jump_CD - 1;
+            end
+
+            if(Doodle_Y_Motion_in < 10) begin
+                Doodle_Y_Motion_in += gravity;
+            end
             Doodle_X_Pos_in = Doodle_X_Pos + Doodle_X_Motion;
             Doodle_Y_Pos_in = Doodle_Y_Pos + Doodle_Y_Motion;
             
-            if(Doodle_Y_Pos_in > Doodle_Y_Max) begin
+            if(Doodle_Y_Pos_in + Doodle_size_Y > Doodle_Y_Max) begin
+                Doodle_Y_Pos_in = Doodle_Y_Min;
+            end
+            if(Doodle_Y_Pos_in < Doodle_Y_Min) begin
                 Doodle_Y_Pos_in = Doodle_Y_Min;
             end
 
             // Update the Doodle's position with its motion
-            if ( Doodle_X_Pos_in + Doodle_size_X > Doodle_X_Max) begin// ---Doodle is at the right edge, CROSS!---
+            if ( Doodle_X_Pos_in > Doodle_X_Max - Doodle_size_X) begin// ---Doodle is at the right edge, CROSS!---
                 Doodle_X_Pos_in = Doodle_X_Min;// + (Doodle_X_Pos + (~Doodle_X_Max) + 1'b1);
             end
-            else if ( Doodle_X_Pos_in < Doodle_X_Min) begin// ---Doodle is at the left edge, CROSS!---
+            if ( Doodle_X_Pos_in < Doodle_X_Min) begin// ---Doodle is at the left edge, CROSS!---
                 Doodle_X_Pos_in = Doodle_X_Max - Doodle_size_X;// + (Doodle_X_Pos + (~Doodle_X_Min) + 1'b1);
             end
             //else;
-
-
-            // Update the ball's position with its motion
 
         end
         

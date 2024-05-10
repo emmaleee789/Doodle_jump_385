@@ -101,7 +101,7 @@ module vga_screen (
 	);
 
 	framebuffer #(
-		//.WIDHT(W), .HEIGHT(H), .DW(8),
+		.WIDHT(640), .HEIGHT(320), .DW(8),
 		.BUFF2X(1) //double buffering enabled
 	) 
 	framebuffer_instance (
