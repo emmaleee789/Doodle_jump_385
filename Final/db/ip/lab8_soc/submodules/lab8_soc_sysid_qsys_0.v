@@ -49,7 +49,7 @@ module lab8_soc_sysid_qsys_0 (
 
   wire    [ 31: 0] readdata;
   //control_slave, which is an e_avalon_slave
-  assign readdata = address ? 1715324871 : 0;
+  assign readdata = address ? 1715331746 : 0;
 
 endmodule
 

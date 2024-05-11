@@ -91,27 +91,26 @@ module doodle (
                 jump_CD_in = jump_CD - 1;
             end
 
-            if(Doodle_Y_Motion_in < 10) begin
+            if(Doodle_Y_Motion_in < 5) begin
                 Doodle_Y_Motion_in += gravity;
             end
+
             Doodle_X_Pos_in = Doodle_X_Pos + Doodle_X_Motion;
             Doodle_Y_Pos_in = Doodle_Y_Pos + Doodle_Y_Motion;
             
-            if(Doodle_Y_Pos_in + Doodle_size_Y > Doodle_Y_Max) begin
+            if(Doodle_Y_Pos_in > Doodle_Y_Max - Doodle_size_Y) begin
                 Doodle_Y_Pos_in = Doodle_Y_Min;
             end
             if(Doodle_Y_Pos_in < Doodle_Y_Min) begin
-                Doodle_Y_Pos_in = Doodle_Y_Min;
+                Doodle_Y_Pos_in = Doodle_Y_Min - Doodle_size_Y;
             end
 
-            // Update the Doodle's position with its motion
             if ( Doodle_X_Pos_in > Doodle_X_Max - Doodle_size_X) begin// ---Doodle is at the right edge, CROSS!---
                 Doodle_X_Pos_in = Doodle_X_Min;// + (Doodle_X_Pos + (~Doodle_X_Max) + 1'b1);
             end
             if ( Doodle_X_Pos_in < Doodle_X_Min) begin// ---Doodle is at the left edge, CROSS!---
                 Doodle_X_Pos_in = Doodle_X_Max - Doodle_size_X;// + (Doodle_X_Pos + (~Doodle_X_Min) + 1'b1);
             end
-            //else;
 
         end
         

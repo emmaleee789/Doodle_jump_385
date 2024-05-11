@@ -17,13 +17,13 @@ module doodle (
     parameter [9:0] Doodle_Y_Min = 10'd1;       // Topmost point on the Y axis
     parameter [9:0] Doodle_Y_Max = H-2;     // Bottommost point on the Y axis 
     parameter [9:0] Doodle_X_Step = 10'd1;      // Step size on the X axis
-    parameter [9:0] gravity = 10'd1;      // Step size on the Y axis
+    parameter [9:0] gravity = 1;      // Step size on the Y axis
     parameter [9:0] Doodle_Y_Step = 10'd1;      // Step size on the Y axis, and can be either pos or neg
     
     logic [9:0] Doodle_X_Pos, Doodle_X_Motion, Doodle_Y_Pos, Doodle_Y_Motion;
     logic [9:0] Doodle_X_Pos_in, Doodle_X_Motion_in, Doodle_Y_Pos_in, Doodle_Y_Motion_in;
     logic [9:0] jump_CD, jump_CD_in;
-    int start;
+    int y_speed, y_speed_in, y_pos_in;
 
     always_ff @ (posedge Clk)
 	begin
@@ -31,7 +31,7 @@ module doodle (
             Doodle_X_Pos <= Doodle_X_Center;
             Doodle_Y_Pos <= Doodle_Y_Center;
             Doodle_X_Motion <= 0;
-            Doodle_Y_Motion <= -3;
+            y_speed <= -5; //Doodle_Y_Motion <= -3;
             jump_CD <= 0;
             //start <= 1;
         end
@@ -40,14 +40,14 @@ module doodle (
             Doodle_X_Pos <= Doodle_X_Center;
             Doodle_Y_Pos <= Doodle_Y_Center;
             Doodle_X_Motion <= 0;
-            Doodle_Y_Motion <= 0;
+            y_speed <= 0; //Doodle_Y_Motion <= 0;
         end
         else
 		begin
             Doodle_X_Pos <= Doodle_X_Pos_in;
-            Doodle_Y_Pos <= Doodle_Y_Pos_in;
+            Doodle_Y_Pos <= y_pos_in;
             Doodle_X_Motion <= Doodle_X_Motion_in;
-            Doodle_Y_Motion <= Doodle_Y_Motion_in;
+            y_speed = y_speed_in; //Doodle_Y_Motion <= Doodle_Y_Motion_in;
             jump_CD = jump_CD_in;
         end
     end
@@ -57,9 +57,9 @@ module doodle (
 	begin
         // By default, keep motion and position unchanged
         Doodle_X_Pos_in = Doodle_X_Pos;
-        Doodle_Y_Pos_in = Doodle_Y_Pos;
+        y_pos_in = Doodle_Y_Pos;
         Doodle_X_Motion_in = Doodle_X_Motion;
-        Doodle_Y_Motion_in = Doodle_Y_Motion;
+        y_speed_in = y_speed; //Doodle_Y_Motion_in = Doodle_Y_Motion;
         jump_CD_in = jump_CD;
         
         // Update position and motion only at rising edge of frame clock
@@ -74,11 +74,11 @@ module doodle (
                 begin
                     Doodle_X_Motion_in = Doodle_X_Step;
                 end
-                8'h1C: // space: jump
+                8'h2C: // space: jump
                 begin
                     if(jump_CD == 0) begin
-                        Doodle_Y_Motion_in = -3;
-                        jump_CD_in = 10;
+                        y_speed_in = -9; //Doodle_Y_Motion_in = -3;
+                        jump_CD_in = 18;
                     end 
                     else ;
                 end
@@ -91,27 +91,26 @@ module doodle (
                 jump_CD_in = jump_CD - 1;
             end
 
-            if(Doodle_Y_Motion_in < 10) begin
-                Doodle_Y_Motion_in += gravity;
-            end
-            Doodle_X_Pos_in = Doodle_X_Pos + Doodle_X_Motion;
-            Doodle_Y_Pos_in = Doodle_Y_Pos + Doodle_Y_Motion;
-            
-            if(Doodle_Y_Pos_in + Doodle_size_Y > Doodle_Y_Max) begin
-                Doodle_Y_Pos_in = Doodle_Y_Min;
-            end
-            if(Doodle_Y_Pos_in < Doodle_Y_Min) begin
-                Doodle_Y_Pos_in = Doodle_Y_Min;
+            if(y_speed_in < 3) begin
+                y_speed_in += gravity; //Doodle_Y_Motion_in += gravity;
             end
 
-            // Update the Doodle's position with its motion
+            Doodle_X_Pos_in = Doodle_X_Pos + Doodle_X_Motion;
+            y_pos_in = Doodle_Y_Pos + y_speed; //Doodle_Y_Pos_in = Doodle_Y_Pos + Doodle_Y_Motion;
+            
+            if(y_pos_in > Doodle_Y_Max - Doodle_size_Y) begin
+                y_pos_in = Doodle_Y_Min+10;
+            end
+            if(y_pos_in < Doodle_Y_Min+10 ) begin
+                y_pos_in = Doodle_Y_Min+10;
+            end
+
             if ( Doodle_X_Pos_in > Doodle_X_Max - Doodle_size_X) begin// ---Doodle is at the right edge, CROSS!---
                 Doodle_X_Pos_in = Doodle_X_Min;// + (Doodle_X_Pos + (~Doodle_X_Max) + 1'b1);
             end
             if ( Doodle_X_Pos_in < Doodle_X_Min) begin// ---Doodle is at the left edge, CROSS!---
                 Doodle_X_Pos_in = Doodle_X_Max - Doodle_size_X;// + (Doodle_X_Pos + (~Doodle_X_Min) + 1'b1);
             end
-            //else;
 
         end
         
