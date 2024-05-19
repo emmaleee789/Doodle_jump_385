@@ -10,6 +10,7 @@
    <endaddress preferredWidth="257" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Library" />
+ <library
+   expandedCategories="Library/Basic Functions,Library/Basic Functions/Clocks; PLLs and Resets,Library,Project" />
  <window width="3146" height="2010" x="-13" y="-13" />
 </preferences>

@@ -1,52 +1,54 @@
-module platform (
+module platform #(
+    parameter W = 10'd640,      // Width of the screen
+    parameter H = 10'd480,      // Height of the screen
+    parameter X_Min = 140,      // Leftmost point on the X axis
+    parameter X_Max = 499    // Rightmost point on the X axis 
+) (
     input   Clk,                // 50 MHz clock
             Reset,              // Active-high reset signal
             frame_clk,          // The clock indicating a new frame (~60Hz)
-    input [7:0] keycode,
+    input [7:0] keycode, state,
+    output logic [9:0] Platform_X_out [0:7],
+    output logic [9:0] Platform_Y_out [0:7]
     //input [9:0]   DrawX, DrawY,       // Current pixel coordinates
-    output [9:0]    Platform_X_out1, Platform_Y_out1, Platform_X_out2, Platform_Y_out2,
-                    Platform_X_out3, Platform_Y_out3, Platform_X_out4, Platform_Y_out4,
-                    Platform_X_out5, Platform_Y_out5, Platform_X_out6, Platform_Y_out6,
-                    Platform_X_out7, Platform_Y_out7, Platform_X_out8, Platform_Y_out8
+    // output [9:0]    Platform_X_out1, Platform_Y_out1, Platform_X_out2, Platform_Y_out2,
+    //                 Platform_X_out3, Platform_Y_out3, Platform_X_out4, Platform_Y_out4,
+    //                 Platform_X_out5, Platform_Y_out5, Platform_X_out6, Platform_Y_out6,
+    //                 Platform_X_out7, Platform_Y_out7, Platform_X_out8, Platform_Y_out8
 );
-
-    parameter [9:0] H = 10'd240;      // Height of the screen
-    parameter [9:0] W = 10'd320;      // Width of the screen
     parameter [9:0] platform_size = 10'd20;
-    parameter [9:0] X_Min = 10'd80;       // Leftmost point on the X axis
-    parameter [9:0] X_Max = 10'd239;     // Rightmost point on the X axis 
     parameter [9:0] Y_Max = H-1;     // Bottommost point on the Y axis
     int Platform_X_out_in [0:7] = '{1, 3, 5, 2, 4, 3, 2, 1};
-    logic [9:0] Platform_X_out [0:7];
-    logic [9:0] Platform_Y_out [0:7];
+    // logic [9:0] Platform_X_out [0:7];
+    // logic [9:0] Platform_Y_out [0:7];
 
-    always_ff @ (posedge frame_clk) 
+    always_ff @ (posedge Clk) 
     begin
         /* ----------- Initialize ----------- */
-        if(Reset) 
+        if(1 == 1) 
         begin		
-            Platform_X_out[0] <= 80; //TODOs
-            Platform_Y_out[0] <= 250;
+            Platform_X_out[0] <= 140; //TODOs
+            Platform_Y_out[0] <= 40;
             
-            Platform_X_out[1] <= 100;
-            Platform_Y_out[1] <= 230;
+            Platform_X_out[1] <= 180;
+            Platform_Y_out[1] <= 80;
             
-            Platform_X_out[2] <= 120;
-            Platform_Y_out[2] <= 260;
+            Platform_X_out[2] <= 220;
+            Platform_Y_out[2] <= 120;
             
-            Platform_X_out[3] <= 140;
-            Platform_Y_out[3] <= 220;
+            Platform_X_out[3] <= 260;
+            Platform_Y_out[3] <= 160;
             
-            Platform_X_out[4] <= 160;
-            Platform_Y_out[4] <= 240;
+            Platform_X_out[4] <= 300;
+            Platform_Y_out[4] <= 200;
             
-            Platform_X_out[5] <= 180;
-            Platform_Y_out[5] <= 220;
+            Platform_X_out[5] <= 340;
+            Platform_Y_out[5] <= 240;
             
-            Platform_X_out[6] <= 200;
+            Platform_X_out[6] <= 380;
             Platform_Y_out[6] <= 240;
 
-            Platform_X_out[7] <= 220;
+            Platform_X_out[7] <= 420;
             Platform_Y_out[7] <= 230;
         end               
             
@@ -92,21 +94,6 @@ module platform (
     //
     //    end
     //
-    assign Platform_X_out1 = Platform_X_out[0];
-    assign Platform_Y_out1 = Platform_Y_out[0];
-    assign Platform_X_out2 = Platform_X_out[1];
-    assign Platform_Y_out2 = Platform_Y_out[1];
-    assign Platform_X_out3 = Platform_X_out[2];
-    assign Platform_Y_out3 = Platform_Y_out[2];
-    assign Platform_X_out4 = Platform_X_out[3];
-    assign Platform_Y_out4 = Platform_Y_out[3];
-    assign Platform_X_out5 = Platform_X_out[4];
-    assign Platform_Y_out5 = Platform_Y_out[4];
-    assign Platform_X_out6 = Platform_X_out[5];
-    assign Platform_Y_out6 = Platform_Y_out[5];
-    assign Platform_X_out7 = Platform_X_out[6];
-    assign Platform_Y_out7 = Platform_Y_out[6];
-    assign Platform_X_out8 = Platform_X_out[7];
-    assign Platform_Y_out8 = Platform_Y_out[7];
+
 
 endmodule

@@ -1,19 +1,22 @@
-module doodle ( 
-    input         Clk,                // 50 MHz clock
-        Reset,              // Active-high reset signal
-        frame_clk,          // The clock indicating a new frame (~60Hz)
+module doodle #(    
+    parameter W = 640,      // Width of the screen
+    parameter H = 480,      // Height of the screen
+    parameter Doodle_X_Min = 140,       // Leftmost point on the X axis
+    parameter Doodle_X_Max = 499     // Rightmost point on the X axis 
+) ( 
+    input Clk,                // 50 MHz clock
+    input Reset,              // Active-high reset signal
+    input frame_clk,          // The clock indicating a new frame (~60Hz)
     input [1:0] frame_clk_edge,
-    input [7:0] keycode,
+
+    input [7:0] keycode, state,
     output [9:0] Doodle_X_out, Doodle_Y_out
-);
-    parameter [9:0] W = 10'd320;      // Width of the screen
-    parameter [9:0] H = 10'd240;      // Height of the screen
-    parameter [9:0] Doodle_size_X = 10'd10;      // Doodle size //TODO
-    parameter [9:0] Doodle_size_Y = 10'd10;      // Doodle size //TODO
+); 
+    parameter [9:0] Doodle_size_X = 10'd32;      // Doodle size //TODO
+    parameter [9:0] Doodle_size_Y = 10'd32;      // Doodle size //TODO
     parameter [9:0] Doodle_X_Center = (W-Doodle_size_X)/2;  // Center position on the X axis 
     parameter [9:0] Doodle_Y_Center = H*2/3;  // Center position on the Y axis 
-    parameter [9:0] Doodle_X_Min = 10'd80;       // Leftmost point on the X axis
-    parameter [9:0] Doodle_X_Max = 10'd239;     // Rightmost point on the X axis 
+
     parameter [9:0] Doodle_Y_Min = 10'd1;       // Topmost point on the Y axis
     parameter [9:0] Doodle_Y_Max = H-2;     // Bottommost point on the Y axis 
     parameter [9:0] Doodle_X_Step = 10'd1;      // Step size on the X axis

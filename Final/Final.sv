@@ -111,14 +111,15 @@ module Final( input               CLOCK_50,
         .CLK(Clk), .RESET(Reset_h),
         .keycode(keycode),
         //output
-        .red(VGA_R[7:4]), .green(VGA_G[7:4]), .blue(VGA_B[7:4]),
+        .red(VGA_R), .green(VGA_G), .blue(VGA_B),
         .vs(VGA_VS), .hs(VGA_HS),
         .pixel_clk(VGA_CLK), .sync(VGA_SYNC_N), .blank(VGA_BLANK_N)
     );
     
-    assign VGA_R[3:0] = VGA_R[7:4];
-    assign VGA_G[3:0] = VGA_G[7:4];
-    assign VGA_B[3:0] = VGA_B[7:4];
+    // assign VGA_R[3:0] = VGA_R[7:4];
+    // assign VGA_G[3:0] = VGA_G[7:4];
+    // assign VGA_B[3:0] = VGA_B[7:4];
+    
     // Display keycode on hex display
     HexDriver hex_inst_0 (keycode[3:0], HEX0);
     HexDriver hex_inst_1 (keycode[7:4], HEX1);
