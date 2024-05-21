@@ -67,9 +67,8 @@ module framebuffer
         input  logic    [1:0] rotate,        //! Screen Rotation: [0] No Rotation - [1] 90 CW - [2] 180 CW - [3] 90 CCW
         input  logic          disable_db,    //! Disable Double Buffering
         output logic          odd_line_out,   //! Odd Line Detector
-        //debug
-        output buffer_using,
-        output wr_en
+        //state signal 
+        output logic buffer_using, wr_en
     );
 
     // Video Data

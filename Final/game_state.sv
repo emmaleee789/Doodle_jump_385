@@ -5,7 +5,8 @@ module game_state
     input [7:0] keycode,
     input [9:0] health,
     
-    output [7:0] state
+    output [7:0] state,
+    output [7:0] platform_size
 );
     
     always_ff @ (posedge Clk) begin
@@ -26,4 +27,7 @@ module game_state
         //     state <= 2;
         // end
     end //always_ff
+    
+    assign platform_size = 30;
+
 endmodule

@@ -1,8 +1,8 @@
 module doodle #(    
     parameter W = 640,      // Width of the screen
     parameter H = 480,      // Height of the screen
-    parameter Doodle_X_Min = 140,       // Leftmost point on the X axis
-    parameter Doodle_X_Max = 499     // Rightmost point on the X axis 
+    parameter X_min = 140,       // Leftmost point on the X axis
+    parameter X_max = 499     // Rightmost point on the X axis 
 ) ( 
     input Clk,                // 50 MHz clock
     input Reset,              // Active-high reset signal
@@ -12,6 +12,7 @@ module doodle #(
     input [7:0] keycode, state,
     input [9:0] Platform_X [0:7],
     input [9:0] Platform_Y [0:7],
+    input [7:0] platform_size,
 
     output [9:0] Doodle_X_out, Doodle_Y_out,
     output [9:0] health
@@ -26,14 +27,14 @@ module doodle #(
     parameter [9:0] Doodle_X_Step = 3;      // Step size on the X axis
     parameter [9:0] gravity = 1;      // Step size on the Y axis
     //parameter [9:0] Doodle_Y_Step = 10'd1;      // Step size on the Y axis, and can be either pos or neg
-    parameter platform_size = 60;
+    //parameter platform_size = 60;
     
     logic [9:0] Doodle_X_Pos, Doodle_X_Motion, Doodle_Y_Pos, Doodle_Y_Motion;
     logic [9:0] Doodle_X_Pos_in, Doodle_X_Motion_in, Doodle_Y_Pos_in, Doodle_Y_Motion_in;
     logic [9:0] jump_CD, jump_CD_in, on_ground;
     int y_speed, y_speed_in, y_pos_in;
     int start = 1;
-    logic [9:0] health_cnt = 10;
+    logic [9:0] health_in = 10;
 
     always_ff @ (posedge Clk)
 	begin
@@ -55,11 +56,11 @@ module doodle #(
         else
 		begin
             Doodle_X_Pos <= Doodle_X_Pos_in;
-            Doodle_Y_Pos <= y_pos_in;
+            Doodle_Y_Pos <= (y_pos_in >= 5)? y_pos_in: 5;
             Doodle_X_Motion <= Doodle_X_Motion_in;
-            y_speed = y_speed_in; //Doodle_Y_Motion <= Doodle_Y_Motion_in;
-            jump_CD = jump_CD_in;
-            // health <= health_cnt; 
+            y_speed <= y_speed_in; //Doodle_Y_Motion <= Doodle_Y_Motion_in;
+            jump_CD <= jump_CD_in;
+            // health <= health_in; 
         end
     end
     
@@ -71,7 +72,7 @@ module doodle #(
         Doodle_X_Motion_in = Doodle_X_Motion;
         y_speed_in = y_speed; //Doodle_Y_Motion_in = Doodle_Y_Motion;
         jump_CD_in = jump_CD;
-        health_cnt = health;
+        health_in = health;
         
         // Update position and motion only at rising edge of frame clock
         if (frame_clk_edge ==2'b01)
@@ -101,33 +102,21 @@ module doodle #(
             if(jump_CD > 0) 
                 jump_CD_in = jump_CD - 1;
             
-
             if(y_speed_in < 4)  //gravity acceleration
                 y_speed_in += gravity; 
             
-
             Doodle_X_Pos_in = Doodle_X_Pos + Doodle_X_Motion;
             y_pos_in = Doodle_Y_Pos + y_speed; //Doodle_Y_Pos_in = Doodle_Y_Pos + Doodle_Y_Motion;
             
             if(Doodle_Y_Pos > Doodle_Y_Max - Doodle_size_Y) begin
                 y_pos_in = Doodle_Y_Min+10;
                 // if(state == 1) begin
-                //     health_cnt = health - 1;
+                //     health_in = health - 1;
                 // end
                 // if(state == 0) begin
-                //     health_cnt = 10;
+                //     health_in = 10;
                 // end
             end
-            
-            if(y_pos_in < Doodle_Y_Min+10 ) 
-                y_pos_in = Doodle_Y_Min+10;
-            
-
-            if ( Doodle_X_Pos_in > Doodle_X_Max - Doodle_size_X) // ---Doodle is at the right edge, CROSS!---
-                Doodle_X_Pos_in = Doodle_X_Min;// + (Doodle_X_Pos + (~Doodle_X_Max) + 1'b1);
-            
-            if ( Doodle_X_Pos_in < Doodle_X_Min) // ---Doodle is at the left edge, CROSS!---
-                Doodle_X_Pos_in = Doodle_X_Max - Doodle_size_X;// + (Doodle_X_Pos + (~Doodle_X_Min) + 1'b1);
             
             /* added for collision */
             //if(state == 1) begin
@@ -152,14 +141,29 @@ module doodle #(
                     && Doodle_Y_Pos + Doodle_size_Y + y_speed_in >= Platform_Y[i]
                     && y_speed_in > 0) 
                 begin
-                        y_speed_in = -12;
+                        y_speed_in = -24;
                         jump_CD_in = 1;
                 end
             end
-
+                    //boundary check
+        if(y_speed_in < 0) begin
+            if(y_pos_in + y_speed_in < Doodle_Y_Min+1)
+                y_pos_in = Doodle_Y_Min+1;
+        end
+        else if(y_pos_in < Doodle_Y_Min+1) begin
+            y_pos_in = Doodle_Y_Min+1;
         end
         
-    end
+        if ( Doodle_X_Pos_in > X_max - Doodle_size_X) // ---Doodle is at the right edge, CROSS!---
+            Doodle_X_Pos_in = X_min;// + (Doodle_X_Pos + (~X_max) + 1'b1);
+        
+        if ( Doodle_X_Pos_in < X_min) // ---Doodle is at the left edge, CROSS!---
+            Doodle_X_Pos_in = X_max - Doodle_size_X;// + (Doodle_X_Pos + (~X_min) + 1'b1);
+        
+        end //if (frame_clk_edge ==2'b01)
+
+
+    end //always_comb
 
     /* Outputs */
     assign Doodle_X_out = Doodle_X_Pos;

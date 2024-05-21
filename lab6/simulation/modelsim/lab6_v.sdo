@@ -29,10 +29,10 @@
 (DELAYFILE
   (SDFVERSION "2.1")
   (DESIGN "lab6_toplevel")
-  (DATE "04/05/2024 19:32:56")
+  (DATE "05/21/2024 15:54:32")
   (VENDOR "Altera")
   (PROGRAM "Quartus Prime")
-  (VERSION "Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition")
+  (VERSION "Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition")
   (DIVIDER .)
   (TIMESCALE 1 ps)
 
