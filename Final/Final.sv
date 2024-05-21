@@ -15,7 +15,7 @@
 
 module Final( input               CLOCK_50,
              input        [3:0]  KEY,          //bit 0 is set up as Reset
-             output logic [6:0]  HEX0, HEX1,
+             output logic [6:0]  HEX0, HEX1, HEX6,
              // VGA Interface 
              output logic [7:0]  VGA_R,        //VGA Red
                                  VGA_G,        //VGA Green
@@ -57,8 +57,9 @@ module Final( input               CLOCK_50,
     logic [1:0] hpi_addr;
     logic [15:0] hpi_data_in, hpi_data_out;
     logic hpi_r, hpi_w, hpi_cs, hpi_reset;
-	logic is_ball;
-	logic [9:0] DrawX, DrawY;
+	//logic is_ball;
+	//logic [9:0] DrawX, DrawY;
+    logic [7:0] state;
     
     // Interface between NIOS II and EZ-OTG chip
     hpi_io_intf hpi_io_inst(
@@ -111,6 +112,7 @@ module Final( input               CLOCK_50,
         .CLK(Clk), .RESET(Reset_h),
         .keycode(keycode),
         //output
+        .state(state),
         .red(VGA_R), .green(VGA_G), .blue(VGA_B),
         .vs(VGA_VS), .hs(VGA_HS),
         .pixel_clk(VGA_CLK), .sync(VGA_SYNC_N), .blank(VGA_BLANK_N)
@@ -123,6 +125,7 @@ module Final( input               CLOCK_50,
     // Display keycode on hex display
     HexDriver hex_inst_0 (keycode[3:0], HEX0);
     HexDriver hex_inst_1 (keycode[7:4], HEX1);
+    HexDriver hex_inst_6 (state[3:0], HEX6);
     
 
 endmodule

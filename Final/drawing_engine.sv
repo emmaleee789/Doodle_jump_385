@@ -16,17 +16,17 @@ module drawing_engine #(
     output [9:0] draw_x, draw_y,
     output [7:0] draw_color
 );
-    parameter [6:0] platform_size = 20;
+    parameter [6:0] platform_size = 60;
 
     logic draw_bg1, draw_bg2, draw_platform, draw_doodle, draw_buffer, draw_spring;
-    logic frame_done, frame_start, next_draw;
+    logic frame_done = 1, frame_start, next_draw;
     int draw_platform_idx = 0;
 
-    logic [9:0] x, y;
+    int x, y;
     logic [15:0] basic_doodle_address;
     assign x = draw_x - Doodle_X;
     assign y = draw_y - Doodle_Y;
-    assign basic_doodle_address = y*32 + x;
+    assign basic_doodle_address = y*32 + x +2;
     
     logic [7:0] basic_doodle_color;
     //int basic_doodle_color = 186;
@@ -50,14 +50,19 @@ module drawing_engine #(
             draw_color <= 0;
             frame_done <= 1;
         end
-        if(frame_clk_edge==2'b01) begin
+        //if(frame_done && frame_clk_edge == 2'b10) begin 
+        if(frame_clk_edge == 2'b10) begin
+        //if(frame_done) begin 
             frame_done <= 0; //start new frame
             next_draw <= 1;
-            draw_bg1 <= 1;
+            draw_bg2 <= 1;
         end
+        // if(!frame_done && frame_clk_edge == 2'b10) begin
+        //     frame_done <= 1;
+        // end
 
         
-        if(wr_en) begin
+        if(wr_en && !frame_done) begin
             if(draw_bg1) begin //background1
                 if(next_draw) begin
                     next_draw <= 0;
@@ -96,7 +101,7 @@ module drawing_engine #(
                         if(draw_y >= H-1) begin //background2 done
                             draw_bg2 <= 0;
                             next_draw <= 1;
-                            draw_buffer <= 1;
+                            draw_platform <= 1;
                         end
                         else begin //draw next row
                             draw_x <= Xmin;
@@ -108,19 +113,19 @@ module drawing_engine #(
                 end
             end
 
-            if(draw_buffer) begin
-                if(next_draw) begin
-                    next_draw <= 0;
-                    draw_x <= buffer_using? 70: 72;
-                    draw_y <= 75;
-                    draw_color <= buffer_using? 8'h09: 8'h0A; //#ff0000 #00ff00 
-                end
-                else begin
-                    draw_buffer <= 0;
-                    next_draw <= 1;
-                    draw_platform <= 1; //start drawing platform
-                end
-            end
+            // if(draw_buffer) begin
+            //     if(next_draw) begin
+            //         next_draw <= 0;
+            //         draw_x <= buffer_using? 70: 72;
+            //         draw_y <= 75;
+            //         draw_color <= buffer_using? 8'h09: 8'h0A; //#ff0000 #00ff00 
+            //     end
+            //     else begin
+            //         draw_buffer <= 0;
+            //         next_draw <= 1;
+            //         draw_platform <= 1; //start drawing platform
+            //     end
+            // end
 
             if(draw_platform) begin
                 if(next_draw) begin
@@ -130,19 +135,22 @@ module drawing_engine #(
                     draw_y <= Platform_Y[draw_platform_idx];
                     draw_color <= 8'h46; //#5faf00
                 end
-                else begin
-                    if (draw_platform_idx >= 8) begin
-                        draw_platform <= 0; //platform done
-                        next_draw <= 1;
-                        draw_doodle <= 1; //start drawing doodle
-                    end
-                    else 
-                        if(draw_x - Platform_X[draw_platform_idx] >= platform_size) begin
+                else 
+                begin
+                    if(draw_x - Platform_X[draw_platform_idx] >= platform_size) begin
+                        if (draw_platform_idx >= 7) begin
+                            draw_platform <= 0; //platform done
+                            next_draw <= 1;
+                            draw_doodle <= 1; //start drawing doodle
+                        end
+                        else begin
                             draw_platform_idx <= draw_platform_idx + 1; // move on to draw next platform
                             draw_x <= Platform_X[draw_platform_idx + 1];
                             draw_y <= Platform_Y[draw_platform_idx + 1];
                         end
-                        else draw_x <= draw_x+1;
+                    end
+                    else 
+                        draw_x <= draw_x+1;
                     
                 end
             end
@@ -161,7 +169,7 @@ module drawing_engine #(
                         if(draw_y >= Doodle_Y + 31) begin
                             draw_doodle <= 0;
                             draw_spring <= 1;
-                            //frame_done <= 1; //end of frame
+                            frame_done <= 1; //end of frame
                         end
                         else begin //draw next row
                             draw_x <= Doodle_X;

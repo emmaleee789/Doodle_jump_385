@@ -140,7 +140,7 @@ module framebuffer
         // This ensures that the Write signal is ready to be triggered again for the next pixel when it arrives.
         // In other words, resetting the Write signal at every pixel clock cycle guarantees that we don't miss any pixel
         // data and that the system is ready to receive new pixel data when it arrives.
-        buffer1_wren <= 1'b0;
+        buffer1_wren <= 1'b1; //1'b0;
         buffer2_wren <= 1'b0;
 
         // The "buffer clear" operation is performed concurrently with the "buffer fill" operation.

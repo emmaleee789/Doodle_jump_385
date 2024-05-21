@@ -3,6 +3,7 @@ module game_state
     input Clk, Reset, frame_clk,
     input [1:0] frame_clk_edge,
     input [7:0] keycode,
+    input [9:0] health,
     
     output [7:0] state
 );
@@ -21,6 +22,8 @@ module game_state
             default: begin
             end
         endcase
-
+        // if(health == 0) begin
+        //     state <= 2;
+        // end
     end //always_ff
 endmodule

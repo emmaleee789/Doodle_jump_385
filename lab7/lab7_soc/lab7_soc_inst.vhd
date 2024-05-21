@@ -1,6 +1,7 @@
 	component lab7_soc is
 		port (
 			clk_clk          : in    std_logic                     := 'X';             -- clk
+			key_wire_export  : in    std_logic_vector(2 downto 0)  := (others => 'X'); -- export
 			led_wire_export  : out   std_logic_vector(7 downto 0);                     -- export
 			reset_reset_n    : in    std_logic                     := 'X';             -- reset_n
 			sdram_clk_clk    : out   std_logic;                                        -- clk
@@ -13,14 +14,14 @@
 			sdram_wire_dqm   : out   std_logic_vector(3 downto 0);                     -- dqm
 			sdram_wire_ras_n : out   std_logic;                                        -- ras_n
 			sdram_wire_we_n  : out   std_logic;                                        -- we_n
-			sw_wire_export   : in    std_logic_vector(7 downto 0)  := (others => 'X'); -- export
-			key_wire_export  : in    std_logic_vector(2 downto 0)  := (others => 'X')  -- export
+			sw_wire_export   : in    std_logic_vector(7 downto 0)  := (others => 'X')  -- export
 		);
 	end component lab7_soc;
 
 	u0 : component lab7_soc
 		port map (
 			clk_clk          => CONNECTED_TO_clk_clk,          --        clk.clk
+			key_wire_export  => CONNECTED_TO_key_wire_export,  --   key_wire.export
 			led_wire_export  => CONNECTED_TO_led_wire_export,  --   led_wire.export
 			reset_reset_n    => CONNECTED_TO_reset_reset_n,    --      reset.reset_n
 			sdram_clk_clk    => CONNECTED_TO_sdram_clk_clk,    --  sdram_clk.clk
@@ -33,7 +34,6 @@
 			sdram_wire_dqm   => CONNECTED_TO_sdram_wire_dqm,   --           .dqm
 			sdram_wire_ras_n => CONNECTED_TO_sdram_wire_ras_n, --           .ras_n
 			sdram_wire_we_n  => CONNECTED_TO_sdram_wire_we_n,  --           .we_n
-			sw_wire_export   => CONNECTED_TO_sw_wire_export,   --    sw_wire.export
-			key_wire_export  => CONNECTED_TO_key_wire_export   --   key_wire.export
+			sw_wire_export   => CONNECTED_TO_sw_wire_export    --    sw_wire.export
 		);
 

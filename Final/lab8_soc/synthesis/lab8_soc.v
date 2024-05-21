@@ -46,6 +46,20 @@ module lab8_soc (
 	wire         mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read;        // mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_read -> jtag_uart_0:av_read_n
 	wire         mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write;       // mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_write -> jtag_uart_0:av_write_n
 	wire  [31:0] mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata;   // mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_writedata -> jtag_uart_0:av_writedata
+	wire  [15:0] mm_interconnect_0_sram_0_avalon_sram_slave_readdata;         // sram_0:readdata -> mm_interconnect_0:sram_0_avalon_sram_slave_readdata
+	wire  [19:0] mm_interconnect_0_sram_0_avalon_sram_slave_address;          // mm_interconnect_0:sram_0_avalon_sram_slave_address -> sram_0:address
+	wire         mm_interconnect_0_sram_0_avalon_sram_slave_read;             // mm_interconnect_0:sram_0_avalon_sram_slave_read -> sram_0:read
+	wire   [1:0] mm_interconnect_0_sram_0_avalon_sram_slave_byteenable;       // mm_interconnect_0:sram_0_avalon_sram_slave_byteenable -> sram_0:byteenable
+	wire         mm_interconnect_0_sram_0_avalon_sram_slave_readdatavalid;    // sram_0:readdatavalid -> mm_interconnect_0:sram_0_avalon_sram_slave_readdatavalid
+	wire         mm_interconnect_0_sram_0_avalon_sram_slave_write;            // mm_interconnect_0:sram_0_avalon_sram_slave_write -> sram_0:write
+	wire  [15:0] mm_interconnect_0_sram_0_avalon_sram_slave_writedata;        // mm_interconnect_0:sram_0_avalon_sram_slave_writedata -> sram_0:writedata
+	wire  [15:0] mm_interconnect_0_sram_1_avalon_sram_slave_readdata;         // sram_1:readdata -> mm_interconnect_0:sram_1_avalon_sram_slave_readdata
+	wire  [19:0] mm_interconnect_0_sram_1_avalon_sram_slave_address;          // mm_interconnect_0:sram_1_avalon_sram_slave_address -> sram_1:address
+	wire         mm_interconnect_0_sram_1_avalon_sram_slave_read;             // mm_interconnect_0:sram_1_avalon_sram_slave_read -> sram_1:read
+	wire   [1:0] mm_interconnect_0_sram_1_avalon_sram_slave_byteenable;       // mm_interconnect_0:sram_1_avalon_sram_slave_byteenable -> sram_1:byteenable
+	wire         mm_interconnect_0_sram_1_avalon_sram_slave_readdatavalid;    // sram_1:readdatavalid -> mm_interconnect_0:sram_1_avalon_sram_slave_readdatavalid
+	wire         mm_interconnect_0_sram_1_avalon_sram_slave_write;            // mm_interconnect_0:sram_1_avalon_sram_slave_write -> sram_1:write
+	wire  [15:0] mm_interconnect_0_sram_1_avalon_sram_slave_writedata;        // mm_interconnect_0:sram_1_avalon_sram_slave_writedata -> sram_1:writedata
 	wire  [31:0] mm_interconnect_0_sysid_qsys_0_control_slave_readdata;       // sysid_qsys_0:readdata -> mm_interconnect_0:sysid_qsys_0_control_slave_readdata
 	wire   [0:0] mm_interconnect_0_sysid_qsys_0_control_slave_address;        // mm_interconnect_0:sysid_qsys_0_control_slave_address -> sysid_qsys_0:address
 	wire  [31:0] mm_interconnect_0_nios2_gen2_0_debug_mem_slave_readdata;     // nios2_gen2_0:debug_mem_slave_readdata -> mm_interconnect_0:nios2_gen2_0_debug_mem_slave_readdata
@@ -115,7 +129,7 @@ module lab8_soc (
 	wire         irq_mapper_receiver0_irq;                                    // jtag_uart_0:av_irq -> irq_mapper:receiver0_irq
 	wire  [31:0] nios2_gen2_0_irq_irq;                                        // irq_mapper:sender_irq -> nios2_gen2_0:irq
 	wire         rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [jtag_uart_0:rst_n, keycode:reset_n, mm_interconnect_0:jtag_uart_0_reset_reset_bridge_in_reset_reset, otg_hpi_address:reset_n, otg_hpi_cs:reset_n, otg_hpi_data:reset_n, otg_hpi_r:reset_n, otg_hpi_reset:reset_n, otg_hpi_w:reset_n]
-	wire         rst_controller_001_reset_out_reset;                          // rst_controller_001:reset_out -> [irq_mapper:reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n, onchip_memory2_0:reset, rst_translator:in_reset, sdram_pll:reset, sysid_qsys_0:reset_n]
+	wire         rst_controller_001_reset_out_reset;                          // rst_controller_001:reset_out -> [irq_mapper:reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n, onchip_memory2_0:reset, rst_translator:in_reset, sdram_pll:reset, sram_0:reset, sram_1:reset, sysid_qsys_0:reset_n]
 	wire         rst_controller_001_reset_out_reset_req;                      // rst_controller_001:reset_req -> [nios2_gen2_0:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
 	wire         nios2_gen2_0_debug_reset_request_reset;                      // nios2_gen2_0:debug_reset_request -> [rst_controller_001:reset_in1, rst_controller_002:reset_in1]
 	wire         rst_controller_002_reset_out_reset;                          // rst_controller_002:reset_out -> [mm_interconnect_0:sdram_reset_reset_bridge_in_reset_reset, sdram:reset_n]
@@ -301,6 +315,44 @@ module lab8_soc (
 		.configupdate       (1'b0)                                             //           (terminated)
 	);
 
+	lab8_soc_sram_0 sram_0 (
+		.clk           (clk_clk),                                                  //                clk.clk
+		.reset         (rst_controller_001_reset_out_reset),                       //              reset.reset
+		.SRAM_DQ       (),                                                         // external_interface.export
+		.SRAM_ADDR     (),                                                         //                   .export
+		.SRAM_LB_N     (),                                                         //                   .export
+		.SRAM_UB_N     (),                                                         //                   .export
+		.SRAM_CE_N     (),                                                         //                   .export
+		.SRAM_OE_N     (),                                                         //                   .export
+		.SRAM_WE_N     (),                                                         //                   .export
+		.address       (mm_interconnect_0_sram_0_avalon_sram_slave_address),       //  avalon_sram_slave.address
+		.byteenable    (mm_interconnect_0_sram_0_avalon_sram_slave_byteenable),    //                   .byteenable
+		.read          (mm_interconnect_0_sram_0_avalon_sram_slave_read),          //                   .read
+		.write         (mm_interconnect_0_sram_0_avalon_sram_slave_write),         //                   .write
+		.writedata     (mm_interconnect_0_sram_0_avalon_sram_slave_writedata),     //                   .writedata
+		.readdata      (mm_interconnect_0_sram_0_avalon_sram_slave_readdata),      //                   .readdata
+		.readdatavalid (mm_interconnect_0_sram_0_avalon_sram_slave_readdatavalid)  //                   .readdatavalid
+	);
+
+	lab8_soc_sram_0 sram_1 (
+		.clk           (clk_clk),                                                  //                clk.clk
+		.reset         (rst_controller_001_reset_out_reset),                       //              reset.reset
+		.SRAM_DQ       (),                                                         // external_interface.export
+		.SRAM_ADDR     (),                                                         //                   .export
+		.SRAM_LB_N     (),                                                         //                   .export
+		.SRAM_UB_N     (),                                                         //                   .export
+		.SRAM_CE_N     (),                                                         //                   .export
+		.SRAM_OE_N     (),                                                         //                   .export
+		.SRAM_WE_N     (),                                                         //                   .export
+		.address       (mm_interconnect_0_sram_1_avalon_sram_slave_address),       //  avalon_sram_slave.address
+		.byteenable    (mm_interconnect_0_sram_1_avalon_sram_slave_byteenable),    //                   .byteenable
+		.read          (mm_interconnect_0_sram_1_avalon_sram_slave_read),          //                   .read
+		.write         (mm_interconnect_0_sram_1_avalon_sram_slave_write),         //                   .write
+		.writedata     (mm_interconnect_0_sram_1_avalon_sram_slave_writedata),     //                   .writedata
+		.readdata      (mm_interconnect_0_sram_1_avalon_sram_slave_readdata),      //                   .readdata
+		.readdatavalid (mm_interconnect_0_sram_1_avalon_sram_slave_readdatavalid)  //                   .readdatavalid
+	);
+
 	lab8_soc_sysid_qsys_0 sysid_qsys_0 (
 		.clock    (clk_clk),                                               //           clk.clk
 		.reset_n  (~rst_controller_001_reset_out_reset),                   //         reset.reset_n
@@ -397,6 +449,20 @@ module lab8_soc (
 		.sdram_pll_pll_slave_read                       (mm_interconnect_0_sdram_pll_pll_slave_read),                  //                                         .read
 		.sdram_pll_pll_slave_readdata                   (mm_interconnect_0_sdram_pll_pll_slave_readdata),              //                                         .readdata
 		.sdram_pll_pll_slave_writedata                  (mm_interconnect_0_sdram_pll_pll_slave_writedata),             //                                         .writedata
+		.sram_0_avalon_sram_slave_address               (mm_interconnect_0_sram_0_avalon_sram_slave_address),          //                 sram_0_avalon_sram_slave.address
+		.sram_0_avalon_sram_slave_write                 (mm_interconnect_0_sram_0_avalon_sram_slave_write),            //                                         .write
+		.sram_0_avalon_sram_slave_read                  (mm_interconnect_0_sram_0_avalon_sram_slave_read),             //                                         .read
+		.sram_0_avalon_sram_slave_readdata              (mm_interconnect_0_sram_0_avalon_sram_slave_readdata),         //                                         .readdata
+		.sram_0_avalon_sram_slave_writedata             (mm_interconnect_0_sram_0_avalon_sram_slave_writedata),        //                                         .writedata
+		.sram_0_avalon_sram_slave_byteenable            (mm_interconnect_0_sram_0_avalon_sram_slave_byteenable),       //                                         .byteenable
+		.sram_0_avalon_sram_slave_readdatavalid         (mm_interconnect_0_sram_0_avalon_sram_slave_readdatavalid),    //                                         .readdatavalid
+		.sram_1_avalon_sram_slave_address               (mm_interconnect_0_sram_1_avalon_sram_slave_address),          //                 sram_1_avalon_sram_slave.address
+		.sram_1_avalon_sram_slave_write                 (mm_interconnect_0_sram_1_avalon_sram_slave_write),            //                                         .write
+		.sram_1_avalon_sram_slave_read                  (mm_interconnect_0_sram_1_avalon_sram_slave_read),             //                                         .read
+		.sram_1_avalon_sram_slave_readdata              (mm_interconnect_0_sram_1_avalon_sram_slave_readdata),         //                                         .readdata
+		.sram_1_avalon_sram_slave_writedata             (mm_interconnect_0_sram_1_avalon_sram_slave_writedata),        //                                         .writedata
+		.sram_1_avalon_sram_slave_byteenable            (mm_interconnect_0_sram_1_avalon_sram_slave_byteenable),       //                                         .byteenable
+		.sram_1_avalon_sram_slave_readdatavalid         (mm_interconnect_0_sram_1_avalon_sram_slave_readdatavalid),    //                                         .readdatavalid
 		.sysid_qsys_0_control_slave_address             (mm_interconnect_0_sysid_qsys_0_control_slave_address),        //               sysid_qsys_0_control_slave.address
 		.sysid_qsys_0_control_slave_readdata            (mm_interconnect_0_sysid_qsys_0_control_slave_readdata)        //                                         .readdata
 	);

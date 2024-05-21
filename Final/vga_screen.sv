@@ -15,6 +15,7 @@ module vga_screen #(
 	
 	input logic [7:0] keycode, //
 
+	output logic [7:0] state, // Game state
 	// Exported Conduit (mapped to VGA port - make sure you export in Platform Designer)
 	output logic [7:0]  red, green, blue,	// VGA color channels (mapped to output pins in top-level)
 	output logic hs, vs,					// VGA HS/VS
@@ -27,32 +28,28 @@ module vga_screen #(
 	logic [9:0] DrawX, DrawY;	
 
 	logic hblank_ah, vblank_ah, frame_clk;
+    logic [1:0] frame_clk_edge;
 	logic buffer_using, wr_en;
-	logic [7:0] state;
+	//logic [7:0] state;
 
 	logic [9:0] draw_x, draw_y;
 	logic [7:0] draw_color, palette_in;
 
-	logic [9:0] Doodle_X, Doodle_Y;
-	logic [9:0] Platform_X_out [0:7];
-	logic [9:0] Platform_Y_out [0:7];
+	logic [9:0] Doodle_X, Doodle_Y, health;
+	logic [9:0] Platform_X [0:7];
+	logic [9:0] Platform_Y [0:7];
 
 
-	assign frame_clk = vblank_ah;   
-	// Detect rising edge of frame_clk
-    logic [1:0] frame_clk_edge;
-    always_ff @ (posedge CLK) begin 	
-        frame_clk_edge = {frame_clk_edge[0], frame_clk};
-    end
-
-	//Declare submodules..e.g. VGA controller, ROMS, etc
 	vga_controller vga_controller_instance (
 		.Clk(CLK), .Reset(RESET), .hs(hblank_ah), .vs(vblank_ah), 
 		.pixel_clk(pixel_clk), 
 		.blank(blank), 
 		.sync(sync), .DrawX(DrawX), .DrawY(DrawY)
 	);
-
+	assign frame_clk = vblank_ah;   
+    always_ff @ (posedge CLK) begin // Detect rising edge of frame_clk
+        frame_clk_edge = {frame_clk_edge[0], frame_clk};
+    end
 
 	game_state game_state_instance (
 		.Clk(CLK), .Reset(RESET), 
@@ -72,8 +69,11 @@ module vga_screen #(
 
 	platform platform_instance (
 		.*,
-		.Clk(CLK), .Reset(RESET), .frame_clk(frame_clk)
+		.Clk(CLK), .Reset(RESET), .frame_clk(frame_clk),
+		.Platform_X_out(Platform_X), .Platform_Y_out(Platform_Y)
 	);
+
+
 
 	drawing_engine drawing_instance (
 		//.*,
@@ -84,7 +84,7 @@ module vga_screen #(
 
 		//.Doodle_X(W/2), .Doodle_Y(H*2/3), //centered doodle
 		.Doodle_X(Doodle_X), .Doodle_Y(Doodle_Y),
-		.Platform_X(Platform_X_out), .Platform_Y(Platform_Y_out),
+		.Platform_X(Platform_X), .Platform_Y(Platform_Y),
 
 		//output
 		.draw_x(draw_x), .draw_y(draw_y),
@@ -101,10 +101,10 @@ module vga_screen #(
 		//input
 		.x(draw_x), .y(draw_y), 
 		.rgb_in(draw_color), 
-		.hblank_in(0), 
-		.vblank_in(0),
-		//.hblank_in(~hblank_ah), 
-		//.vblank_in(~vblank_ah),
+		//.hblank_in(0), 
+		//.vblank_in(0),
+		.hblank_in(~hblank_ah), 
+		.vblank_in(~vblank_ah),
 		//output
 		.rgb_out(palette_in), 
 		.buffer_using(buffer_using), .wr_en(wr_en),
@@ -118,8 +118,6 @@ module vga_screen #(
 		.draw_color(palette_in), 
 		.VGA_R(red), .VGA_G(green), .VGA_B(blue) 
 	);
-	// assign red= 4'b0000;
-	// assign green= 4'b0000;
-	// assign blue= 4'b1101;
+	
 
 endmodule
