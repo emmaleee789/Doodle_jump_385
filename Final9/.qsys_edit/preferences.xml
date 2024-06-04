@@ -11,6 +11,6 @@
   </columns>
  </systemtable>
  <library
-   expandedCategories="Library/Basic Functions,Library/Basic Functions/Clocks; PLLs and Resets,Library,Project" />
+   expandedCategories="Library/Interface Protocols,Library/Interface Protocols/Transceiver PLL,Library,Library/Basic Functions/Clocks; PLLs and Resets/PLL,Library/University Program/Clock,Library/Basic Functions,Project,Library/University Program,Library/Basic Functions/Clocks; PLLs and Resets" />
  <window width="3146" height="2010" x="-17" y="93" />
 </preferences>

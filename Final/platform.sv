@@ -20,7 +20,7 @@ module platform #(
 );
     //parameter [9:0] platform_size = 10'd60;
     parameter [9:0] Y_Max = H-1;     // Bottommost point on the Y axis
-    int Platform_X_motion_step [0:7] = '{1, 3, 0, 2, 0, 3, 2, 1};
+    int Platform_X_motion_step [0:7] = '{0, 0, 0, 0, 1, 1, 2, 2};
     int Platform_Y_motion_step [0:7] = '{1,1,1,1,1,1,1,1}; //'{2, 2, 2, 2, 2, 2, 2, 2};
     int flag = 1;
     logic [9:0] Platform_X_out_in [0:7];
@@ -35,29 +35,29 @@ module platform #(
         /* ----------- Initialize ----------- */
         if(state == 0 && flag) 
         begin		
-            Platform_X_out[0] <= 140; //TODOs
-            Platform_Y_out[0] <= 40;
+            Platform_X_out[0] <= 150; //TODOs
+            Platform_Y_out[0] <= 50;
             
-            Platform_X_out[1] <= 180;
-            Platform_Y_out[1] <= 80;
+            Platform_X_out[1] <= 200;
+            Platform_Y_out[1] <= 110;
             
-            Platform_X_out[2] <= 220;
-            Platform_Y_out[2] <= 120;
+            Platform_X_out[2] <= 80;
+            Platform_Y_out[2] <= 170;
             
-            Platform_X_out[3] <= 160;
-            Platform_Y_out[3] <= 160;
+            Platform_X_out[3] <= 130;
+            Platform_Y_out[3] <= 230;
             
-            Platform_X_out[4] <= 70;
-            Platform_Y_out[4] <= 110;
+            Platform_X_out[4] <= 180;
+            Platform_Y_out[4] <= 70;
             
             Platform_X_out[5] <= 140;
-            Platform_Y_out[5] <= 240;
+            Platform_Y_out[5] <= 190;
             
-            Platform_X_out[6] <= 80;
-            Platform_Y_out[6] <= 140;
+            Platform_X_out[6] <= 220;
+            Platform_Y_out[6] <= 10;
 
-            Platform_X_out[7] <= 120;
-            Platform_Y_out[7] <= 130;
+            Platform_X_out[7] <= 150;
+            Platform_Y_out[7] <= 120;
 
             Platform_X_motion <= Platform_X_motion_step;
             Platform_Y_motion <= Platform_Y_motion_step;

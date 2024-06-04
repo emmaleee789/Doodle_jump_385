@@ -1,9 +1,9 @@
-module font_rom ( input [10:0]	addr,
-						output [7:0]	data
-					 );
-
+module font_rom ( 
+        input [10:0]	addr,
+	output [7:0]	data
+);
 	parameter ADDR_WIDTH = 11;
-   parameter DATA_WIDTH =  8;
+        parameter DATA_WIDTH =  8;
 	logic [ADDR_WIDTH-1:0] addr_reg;
 				
 	// ROM definition				

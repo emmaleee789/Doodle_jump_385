@@ -1,5 +1,5 @@
 Flow report for Final
-Tue May 21 21:30:28 2024
+Mon May 27 16:18:52 2024
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -40,20 +40,20 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue May 21 21:30:28 2024       ;
+; Flow Status                        ; Successful - Mon May 27 16:18:52 2024       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; Final                                       ;
 ; Top-level Entity Name              ; Final                                       ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 7,115 / 114,480 ( 6 % )                     ;
-;     Total combinational functions  ; 6,417 / 114,480 ( 6 % )                     ;
-;     Dedicated logic registers      ; 2,818 / 114,480 ( 2 % )                     ;
-; Total registers                    ; 2937                                        ;
-; Total pins                         ; 135 / 529 ( 26 % )                          ;
+; Total logic elements               ; 7,575 / 114,480 ( 7 % )                     ;
+;     Total combinational functions  ; 6,910 / 114,480 ( 6 % )                     ;
+;     Dedicated logic registers      ; 2,677 / 114,480 ( 2 % )                     ;
+; Total registers                    ; 2796                                        ;
+; Total pins                         ; 178 / 529 ( 34 % )                          ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 1,254,528 / 3,981,312 ( 32 % )              ;
+; Total memory bits                  ; 3,337,344 / 3,981,312 ( 84 % )              ;
 ; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                             ;
 ; Total PLLs                         ; 1 / 4 ( 25 % )                              ;
 +------------------------------------+---------------------------------------------+
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/21/2024 21:28:32 ;
+; Start date & time ; 05/27/2024 16:08:27 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Final               ;
 +-------------------+---------------------+
@@ -75,10 +75,11 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-----------------+----------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name     ; Section Id     ;
 +-------------------------------------+----------------------------------------+---------------+-----------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 220497626666708.171629811208176        ; --            ; --              ; --             ;
+; COMPILER_SIGNATURE_ID               ; 220497626666708.171679730714404        ; --            ; --              ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Systemverilog Hdl                      ; --            ; --              ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim (SystemVerilog)               ; <None>        ; --              ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                                   ; --            ; --              ; eda_simulation ;
+; FLOW_ENABLE_POWER_ANALYZER          ; On                                     ; Off           ; --              ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --              ; --             ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --              ; --             ;
 ; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --              ; --             ;
@@ -92,6 +93,7 @@ refer to the applicable agreement for further details.
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --              ; Top            ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; lab8            ; Top            ;
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --            ; --              ; --             ;
+; POWER_DEFAULT_INPUT_IO_TOGGLE_RATE  ; 12.5 %                                 ; 12.5%         ; --              ; --             ;
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --              ; --             ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --              ; --             ;
 +-------------------------------------+----------------------------------------+---------------+-----------------+----------------+
@@ -102,12 +104,13 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:01:11     ; 1.0                     ; 5083 MB             ; 00:00:23                           ;
-; Fitter               ; 00:00:28     ; 1.2                     ; 6852 MB             ; 00:00:10                           ;
-; Assembler            ; 00:00:03     ; 1.0                     ; 4716 MB             ; 00:00:00                           ;
-; Timing Analyzer      ; 00:00:03     ; 1.8                     ; 5067 MB             ; 00:00:00                           ;
-; EDA Netlist Writer   ; 00:00:06     ; 1.0                     ; 4754 MB             ; 00:00:01                           ;
-; Total                ; 00:01:51     ; --                      ; --                  ; 00:00:34                           ;
+; Analysis & Synthesis ; 00:09:11     ; 1.0                     ; 5298 MB             ; 00:01:58                           ;
+; Fitter               ; 00:00:35     ; 1.2                     ; 6840 MB             ; 00:00:16                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 4737 MB             ; 00:00:00                           ;
+; Power Analyzer       ; 00:00:13     ; 1.2                     ; 5144 MB             ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.8                     ; 5096 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:07     ; 1.0                     ; 4803 MB             ; 00:00:01                           ;
+; Total                ; 00:10:12     ; --                      ; --                  ; 00:02:19                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -119,6 +122,7 @@ refer to the applicable agreement for further details.
 ; Analysis & Synthesis ; GU605M-Stray     ; Windows 10 ; 10.0       ; x86_64         ;
 ; Fitter               ; GU605M-Stray     ; Windows 10 ; 10.0       ; x86_64         ;
 ; Assembler            ; GU605M-Stray     ; Windows 10 ; 10.0       ; x86_64         ;
+; Power Analyzer       ; GU605M-Stray     ; Windows 10 ; 10.0       ; x86_64         ;
 ; Timing Analyzer      ; GU605M-Stray     ; Windows 10 ; 10.0       ; x86_64         ;
 ; EDA Netlist Writer   ; GU605M-Stray     ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
@@ -130,6 +134,7 @@ refer to the applicable agreement for further details.
 quartus_map --read_settings_files=on --write_settings_files=off Final -c Final
 quartus_fit --read_settings_files=off --write_settings_files=off Final -c Final
 quartus_asm --read_settings_files=off --write_settings_files=off Final -c Final
+quartus_pow --read_settings_files=off --write_settings_files=off Final -c Final
 quartus_sta Final -c Final
 quartus_eda --read_settings_files=off --write_settings_files=off Final -c Final
 

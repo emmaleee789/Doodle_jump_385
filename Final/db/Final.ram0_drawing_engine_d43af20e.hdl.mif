@@ -1,0 +1,24 @@
+-- begin_signature
+-- drawing_engine(W
+-- 320
+-- H
+-- 240
+-- X_min
+-- 10'b0001000110
+-- X_max
+-- 10'b0011111001)
+-- end_signature
+WIDTH=7;
+DEPTH=6;
+
+ADDRESS_RADIX=UNS;
+DATA_RADIX=BIN;
+
+CONTENT BEGIN
+	5 :	1101000;
+	4 :	1110100;
+	3 :	1101100;
+	2 :	1100001;
+	1 :	1100101;
+	0 :	1101000;
+END;

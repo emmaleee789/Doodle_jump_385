@@ -1,9 +1,9 @@
 module  img_basic_doodle
 (
-		//input[7:0] x, y, 
-		input [15:0] read_address, 
-		input Clk,
-		output logic [7:0] data_Out 
+	//input[7:0] x, y, 
+	input [15:0] read_address, 
+	input Clk,
+	output logic [7:0] data_Out 
 );
 	parameter [5:0] W = 32;
 	parameter [5:0] H = 32;
@@ -27,21 +27,22 @@ endmodule
 
 
 module  img_holiday_doodle (
-	input[7:0] x, y, //input [18:0] read_address, 
-	input Clk,
-	output logic [4:0] data_Out 
+	//input[7:0] x, y, //
+	input [15:0] read_address, 
+	input Clk, 
+	output logic [7:0] data_Out 
 );
 	parameter [5:0] W = 32;
 	parameter [5:0] H = 32;
 
 	logic [7:0] mem [0: W*H-1]; 
 
-	logic [15:0] read_address;
-	assign read_address = y*W + x;
+	//logic [15:0] read_address;
+	//assign read_address = y*W + x;
 
 	initial
 	begin
-		$readmemh("img_txt/holilday_doodle.txt", mem);
+		$readmemh("img_txt/holiday.txt", mem);
 	end
 
 
@@ -52,21 +53,22 @@ module  img_holiday_doodle (
 endmodule
 
 module  img_nightmare_doodle (
-	input[7:0] x, y, //input [18:0] read_address, 
+	//input[7:0] x, y, 
+	input [15:0] read_address, 
 	input Clk,
-	output logic [4:0] data_Out 
+	output logic [7:0] data_Out 
 );
 	parameter [5:0] W = 32;
 	parameter [5:0] H = 32;
 
 	logic [2:0] mem [0: W*H-1]; 
 
-	logic [15:0] read_address;
-	assign read_address = y*W + x;
+	//logic [15:0] read_address;
+	//assign read_address = y*W + x;
 
 	initial
 	begin
-		$readmemh("img_txt/nightmare_doodle.txt", mem);
+		$readmemh("img_txt/night.txt", mem);
 	end
 
 
@@ -75,3 +77,4 @@ module  img_nightmare_doodle (
 	end
 
 endmodule
+

@@ -1,6 +1,6 @@
 module palette_mapper ( 
 	input Clk,
-    input [7:0] draw_color,
+    input [7:0] draw_color, //input from frame buffer
     output logic [7:0] VGA_R, VGA_G, VGA_B // VGA RGB output
 );
     logic [7:0] write_address, read_address;

@@ -41,29 +41,28 @@ POSSIBILITY OF SUCH DAMAGE.
 
 `default_nettype none
 
-module framebuffer2
-#(
+module framebuffer2 #(
     parameter             WIDTH   = 320, // Resolution Width
     parameter             HEIGHT  = 240, // Resolution Height
     parameter             DW      = 8,   // Video Data Width
     parameter             BUFF2X  = 0,   // Use Double Buffering
-    parameter             SYS_CLK = 0   // Use System Clock
+    parameter             SYS_CLK = 0    // Use System Clock
 ) (
     // Clocks
-    input  logic          clk_sys,       // System Clock
-    input  logic          clk_pix,       // Core Pixel Clock
-    input  logic          clk_vga,       // VGA Output Clock
+    input  logic          clk_sys,       // System Clock(not used)
+    input  logic          clk_pix,       // Core Pixel Clock: 50Mhz
+    input  logic          clk_vga,       // VGA Output Clock: 25Mhz
     // Video Input
-    input  logic [9:0] x, y, //write pixel position
-    input  logic [DW-1:0] rgb_in,        // RGB Video Input
+    input  logic [9:0] x, y,             // write pixel position
+    input  logic [DW-1:0] rgb_in,        // palette color input
     input  logic          hblank_in,     // Horizontal Blank
     input  logic          vblank_in,     // Vertical Blank
     // Video Output
-    output logic [DW-1:0] rgb_out,       // RGB Video Output
+    output logic [DW-1:0] rgb_out,       // palette color output
     output logic          hsync_out,     // Horizontal Sync
     output logic          vsync_out,     // Vertical Sync
     output logic          blank_out,     // Video Blank
-    //state signal 
+    // state signal 
     output logic buffer_using, wr_en
 );
     localparam hc_max = WIDTH;                // Number of Horizontal Visible Pixels (Before Scandoubler)

@@ -22320,7 +22320,7 @@ alt_exception_cause_generated_bad_addr(alt_exception_cause cause)
 1001179c:	d9400015 	stw	r5,0(sp)
 100117a0:	d9800115 	stw	r6,4(sp)
 100117a4:	d9c00215 	stw	r7,8(sp)
-100117a8:	00000000 	call	10000000 <__reset>
+100117a8:	00000000 	call	10000000 <__alt_mem_sdram>
 100117ac:	d9400017 	ldw	r5,0(sp)
 100117b0:	d9800117 	ldw	r6,4(sp)
 100117b4:	d9c00217 	ldw	r7,8(sp)
@@ -22404,7 +22404,7 @@ alt_exception_cause_generated_bad_addr(alt_exception_cause cause)
 100118e4:	10003226 	beq	r2,zero,100119b0 <__call_exitprocs+0x178>
 100118e8:	a009883a 	mov	r4,r20
 100118ec:	98800015 	stw	r2,0(r19)
-100118f0:	00000000 	call	10000000 <__reset>
+100118f0:	00000000 	call	10000000 <__alt_mem_sdram>
 100118f4:	9d000017 	ldw	r20,0(r19)
 100118f8:	a03fe41e 	bne	r20,zero,1001188c <__alt_data_end+0xf801188c>
 100118fc:	dfc00a17 	ldw	ra,40(sp)

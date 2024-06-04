@@ -16,10 +16,12 @@ module vga_screen #(
 	input logic [7:0] keycode, //
 
 	output logic [7:0] state, // Game state
+	output logic doodle_jumped,
 	// Exported Conduit (mapped to VGA port - make sure you export in Platform Designer)
 	output logic [7:0]  red, green, blue,	// VGA color channels (mapped to output pins in top-level)
 	output logic hs, vs,					// VGA HS/VS
-	output logic sync, blank, pixel_clk		// Required by DE2-115 video encoder
+	output logic sync, blank, pixel_clk,		// Required by DE2-115 video encoder
+	output [15:0] score
 );
 	localparam DW = 8; //data_width
 	localparam logic [9:0] X_min = W*7.0/32; //140
@@ -29,18 +31,21 @@ module vga_screen #(
 
 	logic hblank_ah, vblank_ah, frame_clk;
     logic [1:0] frame_clk_edge;
+	logic [7:0] frame_count = 0;
+	//logic [16:0] score;
 	logic buffer_using, wr_en;
-	//logic [7:0] state;
 
 	logic [9:0] draw_x, draw_y;
 	logic [7:0] draw_color, palette_in;
 
-	logic [9:0] Doodle_X, Doodle_Y, health;
+	logic [9:0] Doodle_X, Doodle_Y;
+	logic [3:0] health;
+	logic doodle_facing;
 	logic [9:0] Platform_X [0:7];
 	logic [9:0] Platform_Y [0:7];
 	logic [7:0] platform_size = 30;
 	
-
+	// clk divider
 	vga_controller vga_controller_instance (
 		.Clk(CLK), .Reset(RESET), .hs(hblank_ah), .vs(vblank_ah), 
 		.pixel_clk(pixel_clk), 
@@ -50,6 +55,17 @@ module vga_screen #(
 	assign frame_clk = vblank_ah;   
     always_ff @ (posedge CLK) begin // Detect rising edge of frame_clk
         frame_clk_edge = {frame_clk_edge[0], frame_clk};
+		if(frame_clk_edge == 2'b01) begin
+			if(frame_count<59) begin
+				frame_count <= frame_count + 1;
+			end
+			else begin
+				frame_count <= 0;
+				score <= score + 1;
+			end
+		end
+		if(health==0) 
+			score <= 0;
     end
 
 	// game process ---------------------------------------------------------------
@@ -69,7 +85,7 @@ module vga_screen #(
 		.Clk(CLK), .Reset(RESET), 
 		.frame_clk(frame_clk), .frame_clk_edge(frame_clk_edge),
 		.keycode(keycode),
-		.Doodle_X_out(Doodle_X), .Doodle_Y_out(Doodle_Y)
+		.Doodle_X_out(Doodle_X), .Doodle_Y_out(Doodle_Y), 
 	);
 
 	platform #(
@@ -87,12 +103,13 @@ module vga_screen #(
 	) drawing_instance (
 		//.*,
 		.Clk(CLK), .Reset(RESET),
-		.state(state),
+		.state(state), .keycode(keycode),
 		.frame_clk(frame_clk), .frame_clk_edge(frame_clk_edge),
 		.buffer_using(buffer_using), .wr_en(1), //.wr_en(wr_en),
 
-		//.Doodle_X(W/2), .Doodle_Y(H*2/3), //centered doodle
-		.Doodle_X(Doodle_X), .Doodle_Y(Doodle_Y),
+		//.Doodle_X((W-32)/2), .Doodle_Y(H*2/3), .doodle_facing(0),//centered doodle
+		.Doodle_X(Doodle_X), .Doodle_Y(Doodle_Y), .doodle_facing(doodle_facing),
+		.health(health),
 		.Platform_X(Platform_X), .Platform_Y(Platform_Y),
 		.platform_size(platform_size),
 
