@@ -7,7 +7,7 @@ Any violation to academic integration will not be allowed.
 A 2D platform jump game.  
 Difficulty: 6~7
 
-Final Project working folder is ".\Final"
+Final Project working folder is "./Final", based on lab8 and lab9.
 
 ## Bugs
 Doodle_y calculation not right, need to be changed to integer and boundary check need to be change.
