@@ -4,8 +4,10 @@ Materials can only be used for study.
 Any violation to academic integration will not be allowed.  
 
 ## Final Project: Doodle Jump
-A 2D platform jump game.
+A 2D platform jump game.  
 Difficulty: 6~7
+
+Final Project working folder is ".\Final"
 
 ## Bugs
 Doodle_y calculation not right, need to be changed to integer and boundary check need to be change.
