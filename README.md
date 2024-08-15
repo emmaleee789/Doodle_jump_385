@@ -7,6 +7,11 @@ Any violation to academic integration will not be allowed.
 A 2D platform jump game.  
 Difficulty: 6~7
 
+![屏幕截图 2024-08-15 210514](https://github.com/user-attachments/assets/a32d4f24-1847-4da2-b91e-288573748d51)
+
+https://github.com/user-attachments/assets/0e336152-a000-48ed-84d5-6b45f25b3601
+
+
 Final Project working folder is "./Final", based on lab8 and lab9.
 
 ## Bugs
